@@ -1,0 +1,35 @@
+@import 'bootstrap';
+@import 'bootstrap-sprockets';
+
+$face-color: #4267b2;
+
+header {
+  height: 43px;
+  background-color: $face-color;
+
+  .container {
+    align-items: center;
+    display: flex;
+  }
+
+  a {
+    color: white;
+  }
+}
+
+.top-navbar {
+  position: fixed;
+  z-index: 1043;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.main-page {
+  margin-top: 50px;
+}
+
+.logo {
+  color: white;
+
+}
