@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
-
-    belongs_to :user, foreign_key: 'creator'
+  validates :content, presence: true
+  belongs_to :user, foreign_key: 'creator'
 end
 
 

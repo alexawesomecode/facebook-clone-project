@@ -4,12 +4,12 @@
 $face-color: #4267b2;
 
 header {
-  height: 43px;
   background-color: $face-color;
 
   .container {
     align-items: center;
     display: flex;
+    width: 100%;
   }
 
   a {

@@ -1,8 +1,8 @@
 <header class="navbar top-navbar">
   <div class="container">
     <%= link_to "Facebook Clone", root_path, class: "logo" %>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
+    <nav class="float-right">
+      <ul class="nav navbar-nav">
         <li><%= link_to "Friends",   root_path %></li>
         <% if user_signed_in? %>
           <li class="dropdown">
