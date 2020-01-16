@@ -2,10 +2,13 @@
   <aside class="col-md-4">
     <section class="user_info">
       <h1>
-        <%= @user.first_name @user.last_name %>
+        <%= @user.first_name %>
+        <%= @user.last_name %>
+      </h1>
+      <h2>
         <%= @user.birthday %>
         <%= @user.email %>
-      </h1>
+      </h2>
     </section>
   </aside>
   <div class="col-md-8">
