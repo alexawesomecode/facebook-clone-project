@@ -11,7 +11,7 @@ RSpec.describe "UsersSigninAndCreatePosts", type: :request do
       post new_user_session_path, params: { user: { email: 'user@newuser.com', 
                                                     password:  '202020'}}
       expect(flash[:notice]).to eql('Signed in successfully.')
-      expect(user_signed_in?).to be_truthy
+      expect(session.user_signed_in?).to be_truthy
     end
 
     it "invalid sign in with wrong password and and correct email" do
