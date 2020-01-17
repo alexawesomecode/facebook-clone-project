@@ -11,16 +11,13 @@
        - Likes: <%= post.postlike.count %></p>
   </div>
   <div class="comments">
-        <ul>
-         <% if post.comments.any? %>
-             
-            <%post.comments.each do |comment|%>
-           <li class="comment-item"> <%= comment.comment_content %> </li>
-           <li class="comment-item-author"> <%= comment.user.first_name%></li>
+    <ul>
+     <% if post.comments.any? %>
+        <%post.comments.each do |comment|%>
+          <li class="comment-item"> <%= comment.comment_content %> </li>
+          <li class="comment-item-author"> <%= comment.user.first_name%></li>
         <%end%>
-
-        </ul>
-        <%end%>
-               
+      <%end%>
+    </ul>
   </div>
 <% end %>

@@ -3,7 +3,7 @@
     <%= form_for(:post, url: posts_new_path) do |f| %>
       <%= f.label :content %>
       <%= f.text_area :content, class: 'form-control' %>
-      <br>
+      
       <%= f.submit "New Post", class: "btn btn-primary" %>
     <% end %>
   </div>

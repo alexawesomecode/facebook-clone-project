@@ -1,27 +1,24 @@
 <div class="col-md-8">
-    <% if @user.posts.any? %>
-      <h3>Posts (<%= @user.posts.count %>)</h3>
-      <% @user.posts.each do |post| %>
-        <div class="posts">
-          <p class='post-content'><%= post.content %></p>
-          <p class='post-likes'>
-            <%= post.user.first_name if post.user.first_name %>
-            <%= post.user.last_name if post.user.last_name %>
-             - Likes: <%= post.postlike.count %></p>
-        </div>
-        <div class="comments">
+  <% if @user.posts.any? %>
+    <h3>Posts (<%= @user.posts.count %>)</h3>
+    <% @user.posts.each do |post| %>
+      <div class="posts">
+        <p class='post-content'><%= post.content %></p>
+        <p class='post-likes'>
+          <%= post.user.first_name if post.user.first_name %>
+          <%= post.user.last_name if post.user.last_name %>
+           - Likes: <%= post.postlike.count %></p>
+      </div>
+      <div class="comments">
         <ul>
-         <% if post.comments.any? %>
-             
+          <% if post.comments.any? %>
             <%post.comments.each do |comment|%>
-           <li class="comment-item"> <%= comment.comment_content %> </li>
-           <li class="comment-item-author"> <%= comment.user.first_name%></li>
-        <%end%>
-
+              <li class="comment-item"> <%= comment.comment_content %> </li>
+              <li class="comment-item-author"> <%= comment.user.first_name%></li>
+            <%end%>
+          <%end%>
         </ul>
-    <%end%>
-               
-        </div>
-      <% end %>
+      </div>
     <% end %>
-  </div>
+  <% end %>
+</div>
