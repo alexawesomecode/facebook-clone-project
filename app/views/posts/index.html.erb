@@ -1,2 +1,30 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<div class="row">
+  <div class="col-md-4 ">
+    <% if user_signed_in? %>
+      <h1><%= gravatar_for current_user %></h1>
+      <h2>
+        Hello 
+        <%= current_user.first_name if current_user.first_name %>
+        <%= current_user.last_name if current_user.last_name %>
+      </h2>
+    <% else %>
+      <%= render 'layouts/check_signin' %>
+    <% end %>
+    <p>The time is now: <%= Time.now %></p>
+  </div>
+  <% if user_signed_in? %>
+    <div class="col-md-8">
+      <%= render 'layouts/post_new'%>
+      <%= render 'posts', :class => 'posts' %>
+    </div>
+    <% end %>
+</div>
+<div class='row'>
+  <div class="col-md-12">
+    <% if user_signed_in? %>
+      Logged in as <strong><%= current_user.email %></strong>.
+      <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+    <% end %>
+  </div>
+</div>

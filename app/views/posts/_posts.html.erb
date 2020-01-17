@@ -1,0 +1,13 @@
+<% posts = [] %>
+<% current_user.posts.each do |post| %>
+  <% posts << post %>
+<% end %>
+<% posts.each do |post| %>
+  <div class="index-posts">
+    <p class='post-content'><%= post.content %></p>
+    <p class='post-likes'>
+      <%= post.user.first_name if post.user.first_name %>
+      <%= post.user.last_name if post.user.last_name %>
+       - Likes: <%= post.postlike.count %></p>
+  </div>
+<% end %>

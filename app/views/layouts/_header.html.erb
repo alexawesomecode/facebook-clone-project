@@ -3,6 +3,7 @@
     <%= link_to "Facebook Clone", root_path, class: "logo" %>
     <nav class="elements-to-right">
       <ul class="nav navbar-nav">
+        <li><%= link_to "All users", user_index_path %></li>
         <li><%= link_to "Friends", root_path %></li>
         <% if user_signed_in? %>
           <li class="dropdown">
