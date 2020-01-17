@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :posts, foreign_key: 'creator'
   has_many :postlike, foreign_key: 'user_id'
   has_many :post_id, through: :postlike
+  has_many :comments, foreign_key: 'comment_creator'
 end

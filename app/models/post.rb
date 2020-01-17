@@ -4,6 +4,7 @@ class Post < ApplicationRecord
   belongs_to :user, foreign_key: 'creator'
   has_many :postlike, foreign_key: 'post_id'
   has_many :likes, through: :postlike, source: :user_id
+  has_many :comments, foreign_key: 'post_id'
 end
 
 

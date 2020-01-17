@@ -70,3 +70,28 @@ header {
   padding-right: 12px;
   float: right;
 }
+
+.comments {
+
+  ul {
+
+    padding-top:30px;
+    list-style:none;
+  }
+
+  .comment-item {
+
+    border: 3px dashed lightskyblue;
+    padding: 8px;
+    margin-top: 23px;
+  }
+
+  .comment-item-author {
+
+        display: flex;
+      flex-direction: row-reverse;
+      font-size: 15px;
+      font-weight: bold;
+  
+}
+}
