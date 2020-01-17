@@ -6,8 +6,8 @@
         <%= @user.first_name %>
         <%= @user.last_name %>
       </h1>
-      <h2><%= @user.email %></h2>
-      <h2>Age: <%= age(@user.birthday) %></h2>
+      <h3><%= @user.email %></h3>
+      <h3>Age: <%= age(@user.birthday) %></h3>
     </section>
   </aside>
   <div class="col-md-8">
@@ -15,9 +15,11 @@
       <h3>Posts (<%= @user.posts.count %>)</h3>
       <% @user.posts.each do |post| %>
         <div class="posts">
-          <%= post.content %><br>
-          Likes: <%= post.postlike.count %>
-          <br><br>
+          <p class='post-content'><%= post.content %></p>
+          <p class='post-likes'>
+            <%= post.user.first_name if post.user.first_name %>
+            <%= post.user.last_name if post.user.last_name %>
+             - Likes: <%= post.postlike.count %></p>
         </div>
       <% end %>
     <% end %>

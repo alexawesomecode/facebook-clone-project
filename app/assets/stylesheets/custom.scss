@@ -33,10 +33,13 @@ header {
   margin-top: 50px;
 
   form {
-
     width:460px;
     padding-top: 20px;
-  
+  }
+
+  .index-posts {
+    padding-top: 40px;
+    margin-left: 25%
   }
 }
 
@@ -45,15 +48,25 @@ header {
 }
 
 .elements-to-right {
-
-display: flex;
-flex-direction: row-reverse;
-flex: 1;
+  display: flex;
+  flex-direction: row-reverse;
+  flex: 1;
 }
 
 #post_content {
-
   height:130px;
-
 }
 
+.posts {
+  padding-top: 40px;
+}
+
+.post-content {
+  border: ridge;
+  padding: 12px;
+}
+
+.post-likes {
+  padding-right: 12px;
+  float: right;
+}
