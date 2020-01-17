@@ -15,7 +15,11 @@
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
       <% end %>
-    <%= yield %>
-  </div>
+      <% if user_signed_in? %>
+        <%= yield %>
+      <% else %>
+        <%= redirect_to new_user_session_path %>
+      <% end %>
+    </div>
   </body>
 </html>
