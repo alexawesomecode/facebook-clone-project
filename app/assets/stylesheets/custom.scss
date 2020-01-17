@@ -31,8 +31,29 @@ header {
 
 .main-page {
   margin-top: 50px;
+
+  form {
+
+    width:460px;
+    padding-top: 20px;
+  
+  }
 }
 
 .logo {
   color: white;
 }
+
+.elements-to-right {
+
+display: flex;
+flex-direction: row-reverse;
+flex: 1;
+}
+
+#post_content {
+
+  height:130px;
+
+}
+
