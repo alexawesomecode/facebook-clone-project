@@ -1,17 +1,10 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
 
+  before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
+  protect_from_forgery with: :exception
+  add_flash_types :info, :error, :warning
 
-  private
-
-    def authenticate_user!
-      if user_signed_in?
-        super
-      elsif request.original_fullpath != new_user_session_path
-        redirect_to new_user_session_path, notice: "Please Login to view that page!"
-      end
-    end
 
   protected
 
