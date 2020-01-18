@@ -1,16 +1,21 @@
 <div class="row">
-  <div class="col-md-4 ">
-    <h1><%= gravatar_for current_user %></h1>
-    <h2>
-      Hello 
-      <%= current_user.first_name if current_user.first_name %>
-      <%= current_user.last_name if current_user.last_name %>
-    </h2>
-    <p>The time is now: <%= Time.now %></p>
+  <div class="col-md-4 user-space">
+    <div>
+      <h1><%= gravatar_for current_user %></h1>
+      <h2>
+        Hello 
+        <%= current_user.first_name if current_user.first_name %>
+        <%= current_user.last_name if current_user.last_name %>
+      </h2>
+      <p>The time is now: <%= Time.now %></p>
+    </div>
+    <div>
+      <h1> Friend list: </h1>
+    </div>
   </div>
   <div class="col-md-8">
-    <%= render 'layouts/post_new'%>
-    <%= render 'posts', :class => 'posts', :posts => @posts %>
+    <%= render 'layouts/post_new' %>
+    <%= render 'posts/posts_with_comments', :posts => @posts %>
   </div>
 </div>
 <div class='row'>

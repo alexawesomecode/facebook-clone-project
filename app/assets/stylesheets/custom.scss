@@ -2,6 +2,7 @@
 @import 'bootstrap-sprockets';
 
 $face-color: #4267b2;
+$face-back:  #e9ebee;
 
 header {
   background-color: $face-color;
@@ -12,8 +13,9 @@ header {
     width: 100%;
   }
 
-  a {
+  .header-link {
     color: white;
+    padding: 5px;
   }
 }
 
@@ -27,20 +29,32 @@ header {
   top: 0;
   left: 0;
   right: 0;
+  font-size: 25px;
 }
 
 .main-page {
-  margin-top: 50px;
+  padding: 50px;
+  background-color: $face-back;
 
   form {
-    width:460px;
+    width: 80%;
     padding-top: 20px;
+    margin: 0 auto;
+    font-size: 30px;
   }
 
   .index-posts {
     padding-top: 40px;
     margin-left: 25%
   }
+
+  .new-post {
+    width: 100%;
+  }
+}
+
+.user-space {
+  background-color: lightblue;
 }
 
 .logo {
@@ -53,45 +67,48 @@ header {
   flex: 1;
 }
 
-#post_content {
-  height:130px;
+.post-area {
+  height:130px !important;
 }
 
 .posts {
-  padding-top: 40px;
+  margin-top: 20px;
+  padding-top: 20px;
+  background-color: white;
 }
 
 .post-content {
   border: ridge;
   padding: 12px;
+  width: 95%;
+  margin: 0 auto;
 }
 
 .post-likes {
-  padding-right: 12px;
+  padding-right: 30px;
   float: right;
 }
 
 .comments {
 
   ul {
-
     padding-top:30px;
     list-style:none;
   }
 
   .comment-item {
-
     border: 3px dashed lightskyblue;
     padding: 8px;
-    margin-top: 23px;
+    margin: 23px auto 0 auto;
+    width: 85%;
   }
 
   .comment-item-author {
-
-        display: flex;
-      flex-direction: row-reverse;
-      font-size: 15px;
-      font-weight: bold;
-  
-}
+    display: flex;
+    flex-direction: row-reverse;
+    font-size: 15px;
+    font-weight: bold;
+    padding-right: 85px;
+    padding-bottom: 20px;
+  }
 }

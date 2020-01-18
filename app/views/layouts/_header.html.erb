@@ -1,13 +1,13 @@
 <header class="navbar top-navbar">
   <div class="container">
-    <%= link_to "Facebook Clone", root_path, class: "logo" %>
+    <%= link_to "Facebook Clone", root_path, class: "logo header-link" %>
     <nav class="elements-to-right">
       <ul class="nav navbar-nav">
-        <li><%= link_to "All users", user_index_path %></li>
-        <li><%= link_to "Friends", root_path %></li>
+        <li><%= link_to "All users", user_index_path, class: "header-link" %></li>
+        <li><%= link_to "Friends", root_path, class: "header-link" %></li>
         <% if user_signed_in? %>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="#" class="dropdown-toggle header-link" data-toggle="dropdown">
               Account <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">

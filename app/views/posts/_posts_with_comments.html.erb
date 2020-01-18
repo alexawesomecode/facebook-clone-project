@@ -1,0 +1,23 @@
+<% posts.each do |post| %>
+  <div class="posts">
+    <p class='post-content'><%= post.content %></p>
+    <p class='post-likes'>
+      <%= post.user.first_name if post.user.first_name %>
+      <%= post.user.last_name if post.user.last_name %>
+       - Likes: <%= post.postlike.count %></p>
+    <div class="comments">
+      <ul>
+        <% if post.comments.any? %>
+          <%post.comments.each do |comment|%>
+            <li class="comment-item"> <%= comment.comment_content %> </li>
+            <li class="comment-item-author">
+              <%= comment.user.first_name%>
+              <%= comment.user.last_name%>
+               - Likes: <%= comment.comment_like.count %>
+            </li>
+          <%end%>
+        <%end%>
+      </ul>
+    </div>
+  </div>
+<% end %>
