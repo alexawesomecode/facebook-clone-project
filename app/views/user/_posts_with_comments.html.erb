@@ -14,7 +14,10 @@
           <% if post.comments.any? %>
             <%post.comments.each do |comment|%>
               <li class="comment-item"> <%= comment.comment_content %> </li>
-              <li class="comment-item-author"> <%= comment.user.first_name%></li>
+              <li class="comment-item-author">
+                <%= comment.user.first_name%>
+                <%= comment.user.first_name%>
+              </li>
             <%end%>
           <%end%>
         </ul>
