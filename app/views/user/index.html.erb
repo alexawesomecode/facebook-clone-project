@@ -1,5 +1,17 @@
-<h2>Hello World</h2>
-<p>
-  The time is now: <%= Time.now %>
-</p>
-
+<div class="row">
+  <div class="col-md-4 ">
+    <% @users.each do |user| %>
+      <div>
+        <span><%= gravatar_for user %></span>
+        <h3>
+          <%= user.first_name %>
+          <%= user.last_name %>
+        </h3>
+        <h3><%= user.email %></h3>
+        <% if user.birthday %>
+          <h3>Age: <%= age(user.birthday) %></h3>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
