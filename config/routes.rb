@@ -3,11 +3,11 @@ Rails.application.routes.draw do
   get  'posts/create'
   get  'posts/index'
   get  'posts/show'
-  get  'postlikes/create'
-  get  'postlikes/new'
   root 'posts#index'
+  get  '/help',          to:   'static_pages#help'
+  get  '/about',         to:   'static_pages#about'
+  get  '/contact',       to:   'static_pages#contact'
   post 'posts/new',      to:   'posts#create'
-  post 'postlikes/new',  to:   'postlikes#create'
   resources  :posts,     only: [:new, :create, :index, :show]
   resources  :user,      only: [:show, :index]
   resources  :postlikes, only: [:new, :create, :destroy]

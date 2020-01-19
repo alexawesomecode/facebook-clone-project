@@ -12,12 +12,20 @@ $face-back:  #e9ebee;
   padding-bottom: 20px;
 }
 
+.pb-50 {
+  padding-bottom: 50px;
+}
+
 .pr-10 {
   padding-right: 10px;
 }
 
 .pl-0 {
   padding-left: 0;
+}
+
+.pt-5 {
+  padding-top: 5px
 }
 
 .mt-20 {
@@ -126,5 +134,10 @@ header {
 .cancel-button {
   text-align: center;
   padding-top: 10px;
-  padding-bottom: 20px
+  padding-bottom: 20px;
+}
+
+.static-pages-text {
+  font-size: 25px;
+  padding-left: 30px;
 }

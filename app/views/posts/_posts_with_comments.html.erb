@@ -8,7 +8,7 @@
         <%= link_to "Liked", find_postlike(post) , method: :delete %>
         <%= post.postlike.count %></p>
       <% else %>
-        <%= link_to "Not Liked", postlikes_path(post.id) %>
+        <%= link_to "Not Liked", new_postlike_path(post.id) %>
         <%= post.postlike.count %></p>
       <% end %>
     <div class="comments">
