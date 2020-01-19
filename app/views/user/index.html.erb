@@ -1,17 +1,29 @@
 <div class="row">
-  <div class="col-md-4 ">
-    <% @users.each do |user| %>
-      <div>
-        <span><%= gravatar_for user %></span>
-        <h3>
-          <%= user.first_name %>
-          <%= user.last_name %>
-        </h3>
-        <h3><%= user.email %></h3>
-        <% if user.birthday %>
-          <h3>Age: <%= age(user.birthday) %></h3>
-        <% end %>
+  <% @users.each do |user| %>
+    <div class="col-md-4 ">
+      <div class="user-block">
+        <span class="pr-10"><%= gravatar_for user, size: 150 %></span>
+        <ul>
+          <li><h4>
+            <%= user.first_name %>
+            <%= user.last_name %>
+          </h4></li>
+          <li><h4><%= user.email %></h4></li>
+          <li>
+            <% if user.birthday %>
+              <h4>Age: <%= age(user.birthday) %></h4>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "Profile", user_path(current_user) %> | 
+            <% if current_user == user %>
+              <%= link_to 'Edit profile', edit_user_registration_path %>
+            <% else %>
+              Add friend
+            <% end %>
+          </li>
+        </ul>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>

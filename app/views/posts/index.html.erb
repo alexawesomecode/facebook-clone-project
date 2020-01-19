@@ -1,6 +1,6 @@
 <div class="row">
-  <div class="col-md-4 user-space">
-    <div>
+  <div class="col-md-4">
+    <div class="user-space text-center">
       <h1><%= gravatar_for current_user %></h1>
       <h2>
         Hello 
@@ -9,19 +9,12 @@
       </h2>
       <p>The time is now: <%= Time.now %></p>
     </div>
-    <div>
+    <div class="friends-space">
       <h1> Friend list: </h1>
     </div>
   </div>
   <div class="col-md-8">
     <%= render 'layouts/post_new' %>
     <%= render 'posts/posts_with_comments', :posts => @posts %>
-  </div>
-</div>
-<div class='row'>
-  <div class="col-md-12">
-    Logged in as <strong><%= current_user.email %></strong>.
-    <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
   </div>
 </div>

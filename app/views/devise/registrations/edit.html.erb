@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-4 col-md-offset-4">
+  <div class="col-md-4 col-md-offset-4 bg-white pb-20">
     <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -36,16 +36,16 @@
         <%= f.submit "Update", class: "btn btn-primary form-control" %>
     <% end %>
 
-    <div class="gravatar_edit text-center">
-      <%= gravatar_for @user %>
-      <a href="http://gravatar.com/emails" target="_blank">change</a>
+    <div class="gravatar_edit text-center avatar-div">
+      <dir class="pl-0"><span class="avatar-img">Click on the image to change the avatar</span></dir>
+      <a href="http://gravatar.com/emails" target="_blank" class="avatar-text"><%= gravatar_for @user %></a></span>
     </div>
 
-    <h3>Cancel my account</h3>
+    <h4 class="cancel-account">Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></h3>
 
-    <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+    <div class="text-center"></div>
 
-    <%= link_to "Back", :back %>
+    <%= link_to "Back", :back, class: "btn btn-primary form-control mt-20" %>
 
   </div>
 </div>

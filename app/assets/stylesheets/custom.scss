@@ -4,6 +4,26 @@
 $face-color: #4267b2;
 $face-back:  #e9ebee;
 
+.bg-white {
+  background-color: white;
+}
+
+.pb-20 {
+  padding-bottom: 20px;
+}
+
+.pr-10 {
+  padding-right: 10px;
+}
+
+.pl-0 {
+  padding-left: 0;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
 header {
   background-color: $face-color;
 
@@ -32,15 +52,40 @@ header {
   font-size: 25px;
 }
 
+.bottom-navbar {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid lightgray;
+  color: black;
+  a {
+    color: $gray;
+    &:hover {
+      color: $gray-darker;
+    }
+  }
+  small {
+    float: left;
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 15px;
+    }
+  }
+}
+
 .main-page {
   padding: 50px;
   background-color: $face-back;
+  margin-top: 20px;
 
   form {
     width: 80%;
     padding-top: 20px;
     margin: 0 auto;
-    font-size: 30px;
+    // font-size: 30px;
   }
 
   .index-posts {
@@ -53,8 +98,10 @@ header {
   }
 }
 
-.user-space {
+.user-space, .friends-space {
   background-color: lightblue;
+  margin-bottom: 20px;
+  padding: 10px;
 }
 
 .logo {
@@ -67,48 +114,17 @@ header {
   flex: 1;
 }
 
-.post-area {
-  height:130px !important;
+.edit-links {
+  font-size: 20px;
 }
 
-.posts {
-  margin-top: 20px;
+.cancel-account {
+  text-align: center;
   padding-top: 20px;
-  background-color: white;
 }
 
-.post-content {
-  border: ridge;
-  padding: 12px;
-  width: 95%;
-  margin: 0 auto;
-}
-
-.post-likes {
-  padding-right: 30px;
-  float: right;
-}
-
-.comments {
-
-  ul {
-    padding-top:30px;
-    list-style:none;
-  }
-
-  .comment-item {
-    border: 3px dashed lightskyblue;
-    padding: 8px;
-    margin: 23px auto 0 auto;
-    width: 85%;
-  }
-
-  .comment-item-author {
-    display: flex;
-    flex-direction: row-reverse;
-    font-size: 15px;
-    font-weight: bold;
-    padding-right: 85px;
-    padding-bottom: 20px;
-  }
+.cancel-button {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 20px
 }

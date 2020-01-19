@@ -8,7 +8,6 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag "application" %>
   </head>
-
   <body>
     <%= render 'layouts/header' %>
     <div class="main-page">
@@ -16,6 +15,7 @@
         <div class="alert alert-<%= message_type %>"><%= message %></div>
       <% end %>
     <%= yield %>
+    <%= render 'layouts/footer' %>
   </div>
   </body>
 </html>
