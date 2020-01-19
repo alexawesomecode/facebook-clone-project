@@ -15,7 +15,9 @@
         <div class="alert alert-<%= message_type %>"><%= message %></div>
       <% end %>
     <%= yield %>
-    <%= render 'layouts/footer' %>
-  </div>
+    <% if user_signed_in? %>
+      <%= render 'layouts/footer' %>
+    <% end %>
+    </div>
   </body>
 </html>
