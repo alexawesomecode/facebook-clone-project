@@ -1,8 +1,7 @@
 .comments {
 
   ul {
-    padding-top:30px;
-    list-style:none;
+    list-style: none;
   }
 
   .comment-item {
@@ -13,11 +12,14 @@
   }
 
   .comment-item-author {
-    display: flex;
-    flex-direction: row-reverse;
+    text-align: right;
     font-size: 15px;
     font-weight: bold;
     padding-right: 85px;
     padding-bottom: 20px;
   }
+}
+
+.comment-area {
+  height:130px !important;
 }

@@ -1,0 +1,26 @@
+<% post = Post.find(params[:post_id]) %>
+<div class="posts">
+  <p class='post-content'><%= post.content %></p>
+  <p class='post-likes'>
+    <%= post.user.first_name if post.user.first_name %>
+    <%= post.user.last_name if post.user.last_name %> -
+    <% if post_liked?(post) %>
+      <%= link_to "Liked", find_postlike(post) , method: :delete %>
+      <%= post.postlike.count %>
+    <% else %>
+      <%= link_to "Not Liked", postlikes_path(:post_information => { :post_id => post.id, 
+                                                                     :user_id => current_user.id }), method: post%>
+      <%= post.postlike.count %>
+    <% end %>
+  </p>
+</div>
+<div class="row">
+  <div class="new-post">
+    <%= form_for(:comment, url: post_comments_path) do |f| %>
+      <%= f.label "What's in your mind:" %>
+      <%= f.text_area :comment_content, class: "comment-area form-control" %>
+
+      <%= f.submit "New Comment", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
