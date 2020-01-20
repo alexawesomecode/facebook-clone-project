@@ -32,6 +32,38 @@ $face-back:  #e9ebee;
   margin-top: 20px;
 }
 
+.alert {
+  position: relative;
+  padding: .75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+}
+
+.alert-success {
+  color: #1e6641;
+  background-color: #d8f3e5;
+  border-color: #c8eedb;
+}
+
+.alert-notice {
+  color: #0c5460;
+  background-color: #d1ecf1;
+  border-color: #bee5eb;
+}
+
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.alert-alert {
+  color: #004085;
+  background-color: #cce5ff;
+  border-color: #b8daff;
+}
+
 header {
   background-color: $face-color;
 
