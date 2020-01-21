@@ -2,8 +2,12 @@
 <div class="posts">
   <p class='post-content'><%= post.content %></p>
   <p class='post-likes'>
-    <%= post.user.first_name if post.user.first_name %>
-    <%= post.user.last_name if post.user.last_name %> -
+    <% if post.user.first_name || post.user.last_name %>
+      <%= post.user.first_name %>
+      <%= post.user.last_name %> - 
+    <% else %>
+      <%= post.user.email %> - 
+    <% end %>
     <% if post_liked?(post) %>
       <%= link_to "Liked", find_postlike(post) , method: :delete %>
       <%= post.postlike.count %>
