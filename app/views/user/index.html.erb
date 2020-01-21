@@ -19,7 +19,7 @@
             <% if current_user == user %>
               <%= link_to 'Edit profile', edit_user_registration_path %>
             <% else %>
-              Add friend
+              <%= link_to 'Add friend', friendships_new_path(:friend_information => {:sender => current_user.id, :receiver => user.id }), method: :post %>
             <% end %>
           </li>
         </ul>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_17_205017) do
+ActiveRecord::Schema.define(version: 2020_01_21_153028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,14 @@ ActiveRecord::Schema.define(version: 2020_01_17_205017) do
     t.string "comment_content"
     t.integer "post_id"
     t.integer "comment_creator"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "friendships", force: :cascade do |t|
+    t.boolean "status"
+    t.integer "sender"
+    t.integer "receiver"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -54,8 +62,6 @@ ActiveRecord::Schema.define(version: 2020_01_17_205017) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "first_name"
     t.string "last_name"
-    t.string "password"
-    t.string "password_confirmation"
     t.date "birthday"
     t.string "image"
     t.index ["email"], name: "index_users_on_email", unique: true

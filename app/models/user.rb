@@ -13,4 +13,11 @@ class User < ApplicationRecord
   has_many :comments, foreign_key: 'comment_creator'
   has_many :comment_like, foreign_key: 'user_id'
   has_many :comment_id, through: :comment_like
+
+
+  # Associations with Friends
+  
+  
+  has_many :senders, class_name: 'Friendship', foreign_key: 'sender'
+  has_many :receivers, class_name: 'Friendship', foreign_key: 'receiver'
 end
