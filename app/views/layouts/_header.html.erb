@@ -5,6 +5,7 @@
       <ul class="nav navbar-nav">
         <li><%= link_to "All users", user_index_path, class: "header-link" %></li>
         <li><%= link_to "Friends", friendships_path, class: "header-link" %></li>
+        <li><%= link_to "Notifications", '/friendships/notifications', class: "header-link" %></li>
         <% if user_signed_in? %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle header-link" data-toggle="dropdown">
