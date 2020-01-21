@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   post 'posts/new',        to:   'posts#create'
   post 'comments/new',     to:   'comments#create'
   post 'friendships/new',  to:   'friendships#create'
-  
   resources  :posts,       only: [:new, :create, :index, :show]
   resources  :user,        only: [:show, :index]
   resources  :comments,    only: [:new, :create, :destroy]

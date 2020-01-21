@@ -1,30 +1,20 @@
 <div class="row">
+  <% friends = pending_friendship(current_user) %>
+  <% unless friends == [] %>
+    <h1 class="text-center">Pending friendship requests</h1>
+    <% friends.each do |user| %>
+      <%= render 'user/user_profile', :user => user %>
+    <% end %>
+  <% end %>
+</div>
+<div class="row">
   <% friends = get_friends(current_user) %>
-  <% friends.each do |user| %>
-    <div class="col-md-4 col-sm-6">
-      <div class="user-block">
-        <span class="pr-10"><%= gravatar_for user, size: 150 %></span>
-        <ul>
-          <li><h4>
-            <%= user.first_name %>
-            <%= user.last_name %>
-          </h4></li>
-          <li><h5><%= user.email %></h5></li>
-          <li>
-            <% if user.birthday %>
-              <h4>Age: <%= age(user.birthday) %></h4>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to "Profile", user_path(user) %> | 
-            <% if current_user == user %>
-              <%= link_to 'Edit profile', edit_user_registration_path %>
-            <% else %>
-              <%= link_to 'Add friend', friendships_new_path(:friend_information => {:sender => current_user.id, :receiver => user.id }), method: :post %>
-            <% end %>
-          </li>
-        </ul>
-      </div>
-    </div>
+  <% if friends == [] %>
+    <h1 class="text-center">No friends yet! Too shy?</h1>
+  <% else %>
+    <h1 class="text-center">Friends</h1>
+    <% friends.each do |user| %>
+      <%= render 'user/user_profile', :user => user %>
+    <% end %>
   <% end %>
 </div>
