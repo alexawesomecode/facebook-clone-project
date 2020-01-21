@@ -1,0 +1,25 @@
+.comments {
+
+  ul {
+    list-style: none;
+  }
+
+  .comment-item {
+    border: 3px dashed lightskyblue;
+    padding: 8px;
+    margin: 23px auto 0 auto;
+    width: 85%;
+  }
+
+  .comment-item-author {
+    text-align: right;
+    font-size: 15px;
+    font-weight: bold;
+    padding-right: 85px;
+    padding-bottom: 20px;
+  }
+}
+
+.comment-area {
+  height:130px !important;
+}

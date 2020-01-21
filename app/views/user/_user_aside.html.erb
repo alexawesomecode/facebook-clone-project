@@ -1,0 +1,18 @@
+<div class="col-md-4">
+  <div class="user-space text-center">
+    <h1><%= gravatar_for current_user %></h1>
+    <h2>
+      Hello 
+      <% if current_user.first_name || current_user.last_name %>
+        <%= current_user.first_name %>
+        <%= current_user.last_name %>
+      <% else %>
+        stranger
+      <% end %>
+    </h2>
+    <p>The time is now: <%= Time.now %></p>
+  </div>
+  <div class="friends-space">
+    <h1> Friend list: </h1>
+  </div>
+</div>

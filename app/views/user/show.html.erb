@@ -1,6 +1,6 @@
 <div class="row">
   <aside class="col-md-4">
-    <section class="user_info">
+    <section class="user_info user-space text-center">
       <h1><%= gravatar_for @user %></h1>
       <h1>
         <%= @user.first_name %>
@@ -15,15 +15,7 @@
   <div class="col-md-8">
     <% if @user.posts.any? %>
       <h3>Posts (<%= @user.posts.count %>)</h3>
-      <% @user.posts.each do |post| %>
-        <div class="posts">
-          <p class='post-content'><%= post.content %></p>
-          <p class='post-likes'>
-            <%= post.user.first_name if post.user.first_name %>
-            <%= post.user.last_name if post.user.last_name %>
-             - Likes: <%= post.postlike.count %></p>
-        </div>
-      <% end %>
+      <%= render 'posts/posts_with_comments', :posts => @user.posts %>
     <% end %>
   </div>
 </div>
