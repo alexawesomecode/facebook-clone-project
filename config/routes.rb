@@ -10,13 +10,13 @@ Rails.application.routes.draw do
   get  '/contact',         to:   'static_pages#contact'
   post 'posts/new',        to:   'posts#create'
   post 'comments/new',     to:   'comments#create'
-  post 'friendships/new',  to:    'friendships#create'
+  post 'friendships/new',  to:   'friendships#create'
   
   resources  :posts,       only: [:new, :create, :index, :show]
   resources  :user,        only: [:show, :index]
   resources  :comments,    only: [:new, :create, :destroy]
   resources  :postlikes,   only: [:new, :create, :destroy]
-  resources  :friendships, only: [:new, :create, :destroy, :edit]
+  resources  :friendships, only: [:new, :create, :destroy, :edit, :index]
   resources  :commentlike, only: [:new, :create, :destroy]
   resources  :posts do
     resources  :comments,  only: [:new, :create, :destroy]
