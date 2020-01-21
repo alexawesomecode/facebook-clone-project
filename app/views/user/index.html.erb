@@ -1,6 +1,6 @@
 <div class="row">
   <% @users.each do |user| %>
-    <div class="col-md-4 ">
+    <div class="col-md-4 col-sm-6">
       <div class="user-block">
         <span class="pr-10"><%= gravatar_for user, size: 150 %></span>
         <ul>
@@ -15,7 +15,7 @@
             <% end %>
           </li>
           <li>
-            <%= link_to "Profile", user_path(current_user) %> | 
+            <%= link_to "Profile", user_path(user) %> | 
             <% if current_user == user %>
               <%= link_to 'Edit profile', edit_user_registration_path %>
             <% else %>

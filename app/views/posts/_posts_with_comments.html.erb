@@ -26,8 +26,12 @@
           <%post.comments.each do |comment|%>
             <li class="comment-item"> <%= comment.comment_content %> </li>
             <li class="comment-item-author">
-              <%= comment.user.first_name%>
-              <%= comment.user.last_name%> - 
+              <% if comment.user.first_name || comment.user.last_name %>
+                <%= comment.user.first_name %>
+                <%= comment.user.last_name %> -
+              <% else %>
+                <%= comment.user.email %> -
+              <% end %>
               <% if comment_liked?(comment) %>
                 <%= link_to "Liked", commentlike_path(find_commentlike(comment)), method: :delete %>
                 <%= comment.comment_like.count %></p>
