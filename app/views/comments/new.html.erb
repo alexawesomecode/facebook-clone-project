@@ -4,9 +4,9 @@
   <p class='post-likes'>
     <% if post.user.first_name || post.user.last_name %>
       <%= post.user.first_name %>
-      <%= post.user.last_name %> - 
+      <%= post.user.last_name %> -
     <% else %>
-      <%= post.user.email %> - 
+      <%= post.user.email %> -
     <% end %>
     <% if post_liked?(post) %>
       <%= link_to "Liked", find_postlike(post) , method: :delete %>

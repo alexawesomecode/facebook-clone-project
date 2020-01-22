@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_17_205017) do
+ActiveRecord::Schema.define(version: 2020_01_22_162916) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2020_01_17_205017) do
     t.integer "comment_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["comment_id"], name: "index_comment_likes_on_comment_id"
+    t.index ["user_id"], name: "index_comment_likes_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -28,6 +30,17 @@ ActiveRecord::Schema.define(version: 2020_01_17_205017) do
     t.integer "comment_creator"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_comments_on_post_id"
+  end
+
+  create_table "friendships", force: :cascade do |t|
+    t.boolean "status"
+    t.integer "sender"
+    t.integer "receiver"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["receiver"], name: "index_friendships_on_receiver"
+    t.index ["sender"], name: "index_friendships_on_sender"
   end
 
   create_table "postlikes", force: :cascade do |t|
@@ -35,6 +48,8 @@ ActiveRecord::Schema.define(version: 2020_01_17_205017) do
     t.integer "post_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_postlikes_on_post_id"
+    t.index ["user_id"], name: "index_postlikes_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -54,8 +69,6 @@ ActiveRecord::Schema.define(version: 2020_01_17_205017) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "first_name"
     t.string "last_name"
-    t.string "password"
-    t.string "password_confirmation"
     t.date "birthday"
     t.string "image"
     t.index ["email"], name: "index_users_on_email", unique: true

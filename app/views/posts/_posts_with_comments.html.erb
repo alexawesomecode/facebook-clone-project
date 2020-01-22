@@ -14,7 +14,7 @@
           <%= post.postlike.count %>
         <% else %>
           <%= link_to "Not Liked", postlikes_path(:post_information => { :post_id => post.id, 
-                                                                         :user_id => current_user.id }), method: post%>
+                                                                         :user_id => current_user.id }), method: post %>
           <%= post.postlike.count %>
         <% end %>
       </p>
@@ -27,10 +27,10 @@
             <li class="comment-item"> <%= comment.comment_content %> </li>
             <li class="comment-item-author">
               <% if comment.user.first_name || comment.user.last_name %>
-                <%= comment.user.first_name%>
-                <%= comment.user.last_name%> - 
+                <%= comment.user.first_name %>
+                <%= comment.user.last_name %> -
               <% else %>
-                <%= comment.user.email %> - 
+                <%= comment.user.email %> -
               <% end %>
               <% if comment_liked?(comment) %>
                 <%= link_to "Liked", commentlike_path(find_commentlike(comment)), method: :delete %>

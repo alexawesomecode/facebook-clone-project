@@ -1,29 +1,5 @@
 <div class="row">
   <% @users.each do |user| %>
-    <div class="col-md-4 ">
-      <div class="user-block">
-        <span class="pr-10"><%= gravatar_for user, size: 150 %></span>
-        <ul>
-          <li><h4>
-            <%= user.first_name %>
-            <%= user.last_name %>
-          </h4></li>
-          <li><h5><%= user.email %></h5></li>
-          <li>
-            <% if user.birthday %>
-              <h4>Age: <%= age(user.birthday) %></h4>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to "Profile", user_path(current_user) %> | 
-            <% if current_user == user %>
-              <%= link_to 'Edit profile', edit_user_registration_path %>
-            <% else %>
-              Add friend
-            <% end %>
-          </li>
-        </ul>
-      </div>
-    </div>
+    <%= render 'user/user_profile', :user => user %>
   <% end %>
 </div>
