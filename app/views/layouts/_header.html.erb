@@ -1,6 +1,6 @@
 <header class="navbar top-navbar">
   <div class="container">
-    <%= link_to "Fakebook - Our Facebook Clone", root_path, class: "logo header-link" %>
+    <%= link_to "Fakebook - Our Facebook Clone", root_path, class: "header-link p-15" %>
     <nav class="elements-to-right">
       <ul class="nav navbar-nav">
         <li><%= link_to "All users", user_index_path, class: "header-link" %></li>
@@ -13,7 +13,7 @@
           <ul class="dropdown-menu">
             <% pending.each do |pend| %>
               <li>
-                <p>
+                <p class="pl-10">
                   <% if pend.first_name || pend.last_name %>
                     <%= pend.first_name %>
                     <%= pend.last_name %>
@@ -22,7 +22,7 @@
                   <% end %>
                   sent you a friend request
                 </p>
-                <p>
+                <p class="pl-10">
                   <%= link_to "Profile", user_path(pend.id) %> | 
                   <%= link_to 'Accept', edit_friendship_path(get_friendship(pend).id) %> |
                   <%= link_to 'Reject', edit_friendship_path(get_friendship(pend).id) %>
@@ -34,9 +34,6 @@
             <li><%= link_to "All Notifications", '/friendships/notifications' %></li>
           </ul>
         </li>
-        <!-- 
-        <li><%= link_to "#{pending.count} Notifications", '/friendships/notifications', class: "header-link" %></li>
-         -->
         <% if user_signed_in? %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle header-link" data-toggle="dropdown">

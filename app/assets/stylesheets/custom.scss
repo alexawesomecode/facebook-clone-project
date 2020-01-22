@@ -24,6 +24,10 @@ $face-back:  #e9ebee;
   padding-left: 0;
 }
 
+.pl-10 {
+  padding-left: 10px;
+}
+
 .pt-5 {
   padding-top: 5px
 }
@@ -77,8 +81,11 @@ header {
     color: white;
     padding: 5px;
 
-    :hover {
+    &:hover, &:focus {
       color: $face-color;
+      border-radius: 15px;
+      background-color: #eeeeee;
+      text-decoration: none;
     }
   }
 }
