@@ -36,4 +36,10 @@ class FriendshipsController < ApplicationController
     redirect_to request.referrer || root_url
   end
 
+  private
+
+    def get_inverse(friendship)
+      return Friendship.find_by(sender: friendship.receiver, receiver: friendship.sender)
+    end
+
 end

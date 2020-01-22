@@ -43,7 +43,4 @@ module FriendshipsHelper
                Friendship.find_by(sender:current_user.id, receiver:user.id) 
   end
 
-  def get_inverse(friendship)
-    return Friendship.find_by(sender: friendship.receiver, receiver: friendship.sender)
-  end
 end
