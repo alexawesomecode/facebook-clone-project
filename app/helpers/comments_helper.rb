@@ -1,4 +1,2 @@
 module CommentsHelper
-
-    
 end

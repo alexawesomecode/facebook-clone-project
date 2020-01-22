@@ -12,7 +12,15 @@
     </h2>
     <p>The time is now: <%= Time.now %></p>
   </div>
-  <div class="friends-space">
+  <div class="friends-space row">
     <h1> Friend list: </h1>
+    <% friends = get_friends(current_user) %>
+    <% if friends == [] %>
+      <h2 class="text-center">No friends yet! Too shy?</h2>
+    <% else %>
+      <% friends.each do |user| %>
+        <%= render 'user/user_profile_small', :user => user %>
+      <% end %>
+    <% end %>
   </div>
 </div>
