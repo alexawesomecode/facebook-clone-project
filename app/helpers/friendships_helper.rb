@@ -7,10 +7,6 @@ module FriendshipsHelper
       friends << User.find_by(id: sender.receiver) if sender.status == true
     end
 
-    user.receivers.each do |receiver|
-      friends << User.find_by(id: receiver.sender) if receiver.status == true
-    end
-
     friends
   end
 
@@ -45,5 +41,9 @@ module FriendshipsHelper
   def get_friendship(user)
     relation = Friendship.find_by(sender:user.id, receiver:current_user.id) || 
                Friendship.find_by(sender:current_user.id, receiver:user.id) 
+  end
+
+  def get_inverse(friendship)
+    return Friendship.find_by(sender: friendship.receiver, receiver: friendship.sender)
   end
 end
