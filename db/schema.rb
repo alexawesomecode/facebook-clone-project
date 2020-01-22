@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2020_01_22_162916) do
     t.integer "comment_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["comment_id"], name: "index_comment_likes_on_comment_id"
+    t.index ["user_id"], name: "index_comment_likes_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -28,6 +30,7 @@ ActiveRecord::Schema.define(version: 2020_01_22_162916) do
     t.integer "comment_creator"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_comments_on_post_id"
   end
 
   create_table "friendships", force: :cascade do |t|
@@ -36,7 +39,8 @@ ActiveRecord::Schema.define(version: 2020_01_22_162916) do
     t.integer "receiver"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["id"], name: "index_friendships_on_id"
+    t.index ["receiver"], name: "index_friendships_on_receiver"
+    t.index ["sender"], name: "index_friendships_on_sender"
   end
 
   create_table "postlikes", force: :cascade do |t|
@@ -44,6 +48,8 @@ ActiveRecord::Schema.define(version: 2020_01_22_162916) do
     t.integer "post_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_postlikes_on_post_id"
+    t.index ["user_id"], name: "index_postlikes_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
