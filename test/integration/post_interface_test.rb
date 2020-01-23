@@ -18,7 +18,7 @@ class PostInterfaceTest < ActionDispatch::IntegrationTest
     assert_match new_post_content, response.body
     assert_not flash.empty?
     assert_equal "Post created.", flash[:success]
-
+    destroy_user_session_path
     # get new_post_comment_path(post)
   end
 end
