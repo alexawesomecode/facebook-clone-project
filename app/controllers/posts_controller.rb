@@ -14,9 +14,15 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+  
+  @user_friends = get_all_friends_id(current_user)
+  @posts = Post.where("creator IN (?)", @user_friends)
+  
+
   end
 
   def show
   end
+
+  
 end

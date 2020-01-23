@@ -1,24 +1,5 @@
 module FriendshipsHelper
 
-  def get_friends(user)
-    friends = []
-
-    user.senders.each do |sender|
-      friends << User.find_by(id: sender.receiver) if sender.status == true
-    end
-
-    friends
-  end
-
-  def pending_friendship(user)
-    friends = []
-
-    user.receivers.each do |receiver|
-      friends << User.find_by(id: receiver.sender) if receiver.status == false
-    end
-
-    friends
-  end
 
   def friendship_status(user)
     if !current_user.receivers.empty?
@@ -42,5 +23,7 @@ module FriendshipsHelper
     relation = Friendship.find_by(sender:user.id, receiver:current_user.id) || 
                Friendship.find_by(sender:current_user.id, receiver:user.id) 
   end
+
+  
 
 end
