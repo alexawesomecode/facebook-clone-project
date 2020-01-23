@@ -24,6 +24,34 @@ module FriendshipsHelper
                Friendship.find_by(sender:current_user.id, receiver:user.id) 
   end
 
-  
+  def get_all_friends_id(user)
+    friends = Friendship.select{|f| f.status == true and f.sender == user.id}
+    @friends_id = []
+    friends.each do |f|
+      @friends_id << f.sender
+      @friends_id << f.receiver
+    end
+    @friends_id = @friends_id == [] ? user.id : @friends_id.flatten.uniq
+  end
+
+  def pending_friendship(user)
+    friends = []
+
+    user.receivers.each do |receiver|
+      friends << User.find_by(id: receiver.sender) if receiver.status == false
+    end
+
+    friends
+  end
+
+  def get_friends(user)
+    friends = []
+
+    user.senders.each do |sender|
+      friends << User.find_by(id: sender.receiver) if sender.status == true
+    end
+
+    friends
+  end
 
 end

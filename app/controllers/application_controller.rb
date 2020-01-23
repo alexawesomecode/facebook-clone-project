@@ -5,15 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   add_flash_types :info, :error, :warning
 
-
-
-  def get_all_friends_id(user)
-
-   # @friends = Friendship.where('sender = ?', user.id)
-    @friends_id = @friends.map {|item| [item.receiver, item.sender]}.flatten.uniq!
-    return @friends_id
-    
-  end
+  include FriendshipsHelper
   
     protected
 

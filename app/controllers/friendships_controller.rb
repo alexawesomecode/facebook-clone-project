@@ -37,10 +37,8 @@ class FriendshipsController < ApplicationController
   end
 
   def index 
-
     @pending_friends = pending_friendship(current_user)
     @friends = get_friends(current_user)
-
   end
 
   private
@@ -48,7 +46,5 @@ class FriendshipsController < ApplicationController
     def get_inverse(friendship)
       return Friendship.find_by(sender: friendship.receiver, receiver: friendship.sender)
     end
-
-
 
 end

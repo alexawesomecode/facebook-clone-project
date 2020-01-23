@@ -10,6 +10,12 @@
       <% if @user.birthday %>
         <h3>Age: <%= age(@user.birthday) %></h3>
       <% end %>
+      <% if @user == current_user %>
+        <%= link_to "Edit profile", edit_user_registration_path %>
+      <% else %>
+      <%= link_to 'Unfriend', friendship_path(get_friendship(@user).id), 
+            :data => { :confirm => 'Are you sure?' }, method: :delete %>
+      <% end %>
     </section>
   </aside>
   <div class="col-md-8">
