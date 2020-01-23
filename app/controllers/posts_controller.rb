@@ -7,8 +7,10 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(content: params[:post][:content])
     if @post.save 
+      flash[:success] = "Post created."
       redirect_to root_url
     else
+      flash[:danger] = 'Something went wrong, please try again.'
       render 'post'
     end
   end
