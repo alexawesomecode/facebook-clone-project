@@ -1,30 +1,25 @@
 module FriendshipsHelper
-
   def friendship_status(user)
-    if !current_user.receivers.empty?
-      fs = current_user.receivers.select { |item| item.sender == user.id }
-      if !fs.empty?
-        return fs[0].status == false ? 'wasrequested' : 'friends'
-      end
+    fs = current_user.receivers.select { |item| item.sender == user.id }
+    unless fs.empty?
+      return fs[0].status == false ? 'wasrequested' : 'friends'
     end
 
-    if !current_user.senders.empty?
-      fs = current_user.senders.select { |item| item.receiver == user.id }
-      if !fs.empty?
-        return fs[0].status == false ? 'irequested' : 'friends'
-      end
+    fs = current_user.senders.select { |item| item.receiver == user.id }
+    unless fs.empty?
+      return fs[0].status == false ? 'irequested' : 'friends'
     end
 
-    return nil
+    nil
   end
 
   def get_friendship(user)
-    relation = Friendship.find_by(sender:user.id, receiver:current_user.id) || 
-               Friendship.find_by(sender:current_user.id, receiver:user.id) 
+    Friendship.find_by(sender: user.id, receiver: current_user.id) ||
+      Friendship.find_by(sender: current_user.id, receiver: user.id)
   end
 
   def get_all_friends_id(user)
-    friends = Friendship.select{|f| f.status == true and f.sender == user.id}
+    friends = Friendship.select { |f| f.status == true and f.sender == user.id }
     @friends_id = []
     friends.each do |f|
       @friends_id << f.sender
@@ -52,5 +47,4 @@ module FriendshipsHelper
 
     friends
   end
-
 end

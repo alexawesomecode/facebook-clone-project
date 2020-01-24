@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
@@ -8,7 +6,6 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'ae258494383d6e15502ddaf85bf7170c2ec7d60e8f24c32799c9ba318ddb5fb08c6fd6d290988f1c522a99aa4e332880b10e346af740667e8c7f8f8aa35d2297'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -114,7 +111,6 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = 'd701545630d65b5f760f9274266466472639d39c151cc9e7e6fd20df9715b908141783c4e0f9908a278b8108c787bc13b40c36d72869e64b0811992ddfb9e733'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -297,6 +293,6 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
-   
-    #omniouth for facebook
+
+  # omniouth for facebook
 end

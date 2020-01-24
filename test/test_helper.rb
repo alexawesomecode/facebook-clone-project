@@ -20,8 +20,8 @@ class ActiveSupport::TestCase
   end
 
   def get_friendship(user, user_friend)
-    relation = Friendship.find_by(sender:user.id, receiver:user_friend.id) || 
-               Friendship.find_by(sender:user_friend.id, receiver:user.id) 
+    Friendship.find_by(sender: user.id, receiver: user_friend.id) ||
+      Friendship.find_by(sender: user_friend.id, receiver: user.id)
   end
 
   # Add more helper methods to be used by all tests here...
