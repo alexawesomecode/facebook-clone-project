@@ -1,5 +1,4 @@
 module FriendshipsHelper
-
   def get_friends(user)
     friends = []
 
@@ -21,29 +20,25 @@ module FriendshipsHelper
   end
 
   def friendship_status(user)
-    if !current_user.receivers.empty?
-      fs = current_user.receivers.select { |item| item.sender == user.id }
-      if !fs.empty?
-        return fs[0].status == false ? 'wasrequested' : 'friends'
-      end
+    fs = current_user.receivers.select { |item| item.sender == user.id }
+    unless fs.empty?
+      return fs[0].status == false ? 'wasrequested' : 'friends'
     end
 
-    if !current_user.senders.empty?
-      fs = current_user.senders.select { |item| item.receiver == user.id }
-      if !fs.empty?
-        return fs[0].status == false ? 'irequested' : 'friends'
-      end
+    fs = current_user.senders.select { |item| item.receiver == user.id }
+    unless fs.empty?
+      return fs[0].status == false ? 'irequested' : 'friends'
     end
 
-    return nil
+    nil
   end
 
   def get_friendship(user)
-    relation = Friendship.find_by(sender:user.id, receiver:current_user.id) || 
-               Friendship.find_by(sender:current_user.id, receiver:user.id) 
+    Friendship.find_by(sender: user.id, receiver: current_user.id) ||
+      Friendship.find_by(sender: current_user.id, receiver: user.id)
   end
 
   def get_inverse(friendship)
-    return Friendship.find_by(sender: friendship.receiver, receiver: friendship.sender)
+    Friendship.find_by(sender: friendship.receiver, receiver: friendship.sender)
   end
 end

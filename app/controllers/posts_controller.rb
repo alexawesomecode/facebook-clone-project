@@ -1,12 +1,11 @@
 class PostsController < ApplicationController
-
   def new
     @post = Post.new
   end
 
   def create
     @post = current_user.posts.build(content: params[:post][:content])
-    if @post.save 
+    if @post.save
       redirect_to root_url
     else
       render 'post'
@@ -17,6 +16,5 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
-  def show
-  end
+  def show; end
 end

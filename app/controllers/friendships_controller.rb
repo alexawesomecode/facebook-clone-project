@@ -5,11 +5,9 @@ class FriendshipsController < ApplicationController
 
   def create
     if params[:friend_information][:sender] != params[:friend_information][:receiver]
-      @new_friendship = Friendship.new(sender:params[:friend_information][:sender], 
+      @new_friendship = Friendship.new(sender: params[:friend_information][:sender],
                                        receiver: params[:friend_information][:receiver], status: 0)
-      if @new_friendship.save 
-        redirect_to request.referrer || root_url
-      end
+      redirect_to request.referrer || root_url if @new_friendship.save
     else
       flash[:danger] = 'You cant send an invitation to yourself!'
     end
@@ -18,12 +16,9 @@ class FriendshipsController < ApplicationController
   def edit
     @fs = Friendship.find_by(id: params[:id])
     @fs.status = !@fs.status
-    if @fs.save
-      @fs_inverse = Friendship.new(sender: @fs.receiver, receiver: @fs.sender, status: true)
-      if @fs_inverse.save
-        redirect_to request.referrer || root_url
-      end
-    end
+    @fs.save
+    @fs_inverse = Friendship.new(sender: @fs.receiver, receiver: @fs.sender, status: true)
+    redirect_to request.referrer || root_url if @fs_inverse.save
   end
 
   def destroy
@@ -35,5 +30,4 @@ class FriendshipsController < ApplicationController
     @fs.destroy
     redirect_to request.referrer || root_url
   end
-
 end
