@@ -1,6 +1,6 @@
 module CommentlikeHelper
 
-    private
+  private
 
     def comment_liked?(comment)
       current_user.comment_like.each do |pl|
@@ -11,7 +11,7 @@ module CommentlikeHelper
 
     def find_commentlike(comment)
       current_user.comment_like.each do |pl|
-        return pl if pl.comment == comment      
+        return pl if pl.comment == comment
       end
     end
 end
