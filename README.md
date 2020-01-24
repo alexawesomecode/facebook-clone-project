@@ -26,6 +26,7 @@ The Entity-Relationship Diagram (ERD) describes illustratively how the associati
 ## Live version and github reppository
 
 For a live version, you can visit https://facebook-clone-2020.herokuapp.com/
+
 The Github repository is in https://github.com/alexawesomecode/facebook-clone-project
 
 ## Technologies used

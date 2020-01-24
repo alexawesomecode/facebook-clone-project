@@ -10,7 +10,7 @@ class PostsController < ApplicationController
       redirect_to root_url
     else
       flash[:danger] = 'Something went wrong, please try again.'
-      render 'post'
+      redirect_to request.referrer || root_url
     end
   end
 
