@@ -7,16 +7,17 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(content: params[:post][:content])
     if @post.save 
+      flash[:success] = "Post created."
       redirect_to root_url
     else
+      flash[:danger] = 'Something went wrong, please try again.'
       render 'post'
     end
   end
 
   def index
-    @posts = Post.all
+    @user_friends = get_all_friends_id(current_user)
+    @posts = Post.where("creator IN (?)", @user_friends)
   end
 
-  def show
-  end
 end
