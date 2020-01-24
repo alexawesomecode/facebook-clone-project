@@ -19,8 +19,9 @@ Rails.application.routes.draw do
   resources  :friendships,          only: [:new, :create, :destroy, :edit, :index, :show]
   resources  :commentlike,          only: [:new, :create, :destroy]
   resources  :posts do
-    resources  :comments,  only: [:new, :create, :destroy]
+    resources  :comments,           only: [:new, :create, :destroy]
   end
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callback' }
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

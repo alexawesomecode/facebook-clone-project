@@ -5,14 +5,11 @@ class PostlikesController < ApplicationController
   end
 
   def create
-    
-    
-    @postlike = Postlike.new(post_id: params[:post_information][:post_id], user_id: params[:post_information][:user_id])
-    print "hello world"
-    p @postlike
-    
+    @postlike = Postlike.new(post_id: params[:post_information][:post_id], 
+                             user_id: params[:post_information][:user_id])
+
     if @postlike.save
-    redirect_to request.referrer || root_url
+      redirect_to request.referrer || root_url
     end
   end
 
