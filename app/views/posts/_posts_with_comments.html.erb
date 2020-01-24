@@ -1,6 +1,7 @@
 <% posts.each do |post| %>
   <div class="posts">
     <p class='post-content'><%= post.content %></p>
+    <%= image_tag post.picture.url if post.picture? %>
     <div class='post-likes'>
       <p>
         <% if post.user.first_name || post.user.last_name %>

@@ -13,6 +13,8 @@ gem 'mini_magick'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'pg'
+gem 'carrierwave'
+gem 'mini_magick'
 gem 'puma', '~> 4.1'
 gem 'rails', '~> 6.0.1'
 gem 'sass-rails', '>= 6'
@@ -35,7 +37,7 @@ group :development do
 end
 
 group :production do
-  # gem 'fog'
+#   gem 'fog'
 end
 
 group :test do

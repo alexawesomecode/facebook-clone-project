@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
   validates :content, presence: true
-
+  mount_uploader :picture, PictureUploader
+  
   # Association with User
   belongs_to :user, foreign_key: 'creator'
 

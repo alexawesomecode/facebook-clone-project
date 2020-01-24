@@ -3,6 +3,9 @@
     <%= form_for(:post, url: posts_new_path) do |f| %>
       <%= f.label 'Tell me everything:' %>
       <%= f.text_area :content, class: "post-area form-control" %>
+        <span class="picture">
+        <%= f.file_field :picture %>
+        </span>
 
       <%= f.submit "New Post", class: "btn btn-primary" %>
     <% end %>

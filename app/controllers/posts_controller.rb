@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.build(content: params[:post][:content])
+    @post = current_user.posts.build(content: params[:post][:content], picture: params[:post][:picture])
     if @post.save
       flash[:success] = 'Post created.'
       redirect_to root_url
