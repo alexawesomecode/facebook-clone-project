@@ -1,6 +1,5 @@
 module FriendshipsHelper
 
-
   def friendship_status(user)
     if !current_user.receivers.empty?
       fs = current_user.receivers.select { |item| item.sender == user.id }

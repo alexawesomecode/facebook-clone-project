@@ -23,7 +23,7 @@
           <%= link_to 'Accept', edit_friendship_path(get_friendship(user).id) %> |
           <%= link_to 'Reject', friendship_path(get_friendship(user).id), method: :delete %>
         <% elsif friendship_status(user) == 'irequested' %>
-          <%= link_to 'Cancel request', edit_friendship_path(get_friendship(user).id) %>
+          <%= link_to 'Cancel request', friendship_path(get_friendship(user).id), method: :delete %>
         <% elsif friendship_status(user) == 'friends' %>
           <%= link_to 'Unfriend', friendship_path(get_friendship(user).id), :data => { :confirm => 'Are you sure?' }, method: :delete %>
         <% end %>
