@@ -23,6 +23,7 @@ gem 'webpacker', '~> 4.0'
 gem 'will_paginate', '3.2.1'
 # gem 'redis', '~> 4.0'
 # gem 'image_processing', '~> 1.2'
+gem 'fog-aws'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
@@ -38,7 +39,6 @@ end
 
 group :production do
   gem 'fog'
-  gem 'fog-aws'
 end
 
 group :test do
