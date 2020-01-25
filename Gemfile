@@ -37,7 +37,8 @@ group :development do
 end
 
 group :production do
-#   gem 'fog'
+  gem 'fog'
+  gem 'fog-aws'
 end
 
 group :test do
