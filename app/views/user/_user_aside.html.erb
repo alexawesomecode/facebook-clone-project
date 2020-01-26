@@ -3,9 +3,8 @@
     <h1><%= gravatar_for current_user %></h1>
     <h2>
       Hello 
-      <% if current_user.first_name || current_user.last_name %>
-        <%= current_user.first_name %>
-        <%= current_user.last_name %>
+      <% if current_user.name %>
+        <%= current_user.name %>
       <% else %>
         stranger
       <% end %>

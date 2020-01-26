@@ -4,9 +4,8 @@
     <span class='post-images'><%= image_tag post.picture.url if post.picture? %></span>
     <div class='post-likes'>
       <p>
-        <% if post.user.first_name || post.user.last_name %>
-          <%= post.user.first_name %>
-          <%= post.user.last_name %> - 
+        <% if post.user.name %>
+          <%= post.user.name %> - 
         <% else %>
           <%= post.user.email %> - 
         <% end %>
@@ -28,9 +27,8 @@
           <%post.comments.each do |comment|%>
             <li class="comment-item"> <%= comment.comment_content %> </li>
             <li class="comment-item-author">
-              <% if comment.user.first_name || comment.user.last_name %>
-                <%= comment.user.first_name %>
-                <%= comment.user.last_name %> -
+              <% if comment.user.name %>
+                <%= comment.user.name %> - 
               <% else %>
                 <%= comment.user.email %> -
               <% end %>

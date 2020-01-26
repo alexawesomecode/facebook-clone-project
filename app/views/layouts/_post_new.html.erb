@@ -3,7 +3,7 @@
     <%= form_for(:post, url: posts_new_path) do |f| %>
       <%= f.label 'Tell me everything:' %>
       <%= f.text_area :content, class: "post-area form-control" %>
-        
+
       <span class="picture post-images">
         <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png', class: "btn" %>
       </span>

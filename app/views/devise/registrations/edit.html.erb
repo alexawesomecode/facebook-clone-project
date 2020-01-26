@@ -12,11 +12,8 @@
           <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
         <% end %>
 
-        <%= f.label :first_name %>
-        <%= f.text_field :first_name, autocomplete: "first_name", class: 'form-control' %>
-
-        <%= f.label :last_name %>
-        <%= f.text_field :last_name, autocomplete: "last_name", class: 'form-control' %>
+        <%= f.label :name %>
+        <%= f.text_field :name, autocomplete: "name", class: 'form-control' %>
 
         <%= f.label :birthday %>
         <%= f.date_field :birthday, autocomplete: "birthday", class: 'form-control' %>

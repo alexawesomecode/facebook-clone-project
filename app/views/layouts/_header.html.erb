@@ -15,9 +15,8 @@
               <% pending.each do |pend| %>
                 <li>
                   <p class="pl-10">
-                    <% if pend.first_name || pend.last_name %>
-                      <%= pend.first_name %>
-                      <%= pend.last_name %>
+                    <% if pend.name %>
+                      <%= pend.name %>
                     <% else %>
                       <%= pend.email %>
                     <% end %>

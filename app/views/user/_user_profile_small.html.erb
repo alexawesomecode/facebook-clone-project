@@ -3,9 +3,8 @@
     <span class=""><%= gravatar_for user, size: 100 %></span>
     <ul class="pl-0">
       <li class="text-center"><h4>
-      <% if user.first_name || user.last_name %>
-        <%= user.first_name %>
-        <%= user.last_name %>
+      <% if user.name %>
+        <%= user.name %>
       <% else %>
         Stranger
       <% end %>
