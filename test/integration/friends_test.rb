@@ -7,7 +7,7 @@ class PostInterfaceTest < ActionDispatch::IntegrationTest
 
     sign_in @user
     get user_path(@user_friend.id)
-    post friendships_new_path(friend_information: { sender: @user.id, receiver: @user_friend.id })
+    post friendships_path(params: { sender: @user.id, receiver: @user_friend.id })
 
     assert_equal @user.senders.first.status, false
     assert_equal @user.senders.first.sender, @user.id

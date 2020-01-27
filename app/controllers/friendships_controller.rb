@@ -6,7 +6,7 @@ class FriendshipsController < ApplicationController
   def create
     if params[:friend_information][:sender] != params[:friend_information][:receiver]
       @new_friendship = Friendship.new(sender: params[:friend_information][:sender],
-                                       receiver: params[:friend_information][:receiver], status: 0)
+                                       receiver: params[:friend_information][:receiver], status: false)
       redirect_to request.referrer || root_url if @new_friendship.save
     else
       flash[:danger] = 'You cant send an invitation to yourself!'

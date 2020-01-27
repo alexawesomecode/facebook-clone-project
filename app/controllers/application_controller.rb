@@ -3,6 +3,27 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   protect_from_forgery with: :exception
 
+  helper_method :get_friendship
+  helper_method :pending_friendship
+
+  def get_friendship(user)
+    Friendship.find_by(sender: user.id, receiver: current_user.id) ||
+      Friendship.find_by(sender: current_user.id, receiver: user.id)
+  end
+
+  def pending_friendship(user)
+    friends = []
+
+    user.receivers.each do |receiver|
+      if User.find_by(id: receiver.sender) == nil
+        complete_delete(receiver.sender)
+      else
+        friends << User.find_by(id: receiver.sender) if receiver.status == false
+      end
+    end
+
+    friends
+  end
 
   protected
 
