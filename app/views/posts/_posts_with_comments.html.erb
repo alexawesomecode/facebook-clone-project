@@ -9,6 +9,10 @@
         <% else %>
           <%= post.user.email %> - 
         <% end %>
+        <% if post.user == current_user %>
+          <%= link_to "Edit post", edit_post_path(post.id) %> - 
+          <%= link_to "Delete post", post_path(post.id), method: :delete %> - 
+        <% end %>
         <% if post_liked?(post) %>
           <%= link_to " ", find_postlike(post) , method: :delete, :class => "far fa-thumbs-up icons" %>
           <%= post.postlike.count %>
@@ -31,6 +35,10 @@
                 <%= comment.user.name %> - 
               <% else %>
                 <%= comment.user.email %> -
+              <% end %>
+              <% if comment.user == current_user %>
+                <%= link_to "Edit comment", edit_post_comment_path(post.id, comment.id) %> - 
+                <%= link_to "Delete comment", post_comment_path(post.id, comment.id), method: :delete %> - 
               <% end %>
               <% if comment_liked?(comment) %>
                 <%= link_to " ", commentlike_path(find_commentlike(comment)), method: :delete, :class => "far fa-thumbs-up icons" %>

@@ -32,7 +32,11 @@ module FriendshipsHelper
     friends = []
 
     user.receivers.each do |receiver|
-      friends << User.find_by(id: receiver.sender) if receiver.status == false
+      if User.find_by(id: receiver.sender) == nil
+        complete_delete(receiver.sender)
+      else
+        friends << User.find_by(id: receiver.sender) if receiver.status == false
+      end
     end
 
     friends
