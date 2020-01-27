@@ -1,22 +1,62 @@
 class PostsController < ApplicationController
-
   def new
     @post = Post.new
   end
 
   def create
-    @post = current_user.posts.build(content: params[:post][:content])
-    if @post.save 
+    @post = current_user.posts.build(content: params[:post][:content], 
+                                     picture: params[:post][:picture])
+    if @post.save
+      flash[:success] = 'Post created.'
       redirect_to root_url
     else
-      render 'post'
+      flash[:danger] = 'Something went wrong, please try again.'
+      redirect_to request.referrer || root_url
     end
   end
 
   def index
-    @posts = Post.all
+    @user_friends = get_friends(current_user)
+    @posts = Post.where('creator IN (?) OR creator = (?)', @user_friends, current_user)
   end
 
-  def show
+  def destroy
+    @post = Post.find(params[:id])
+
+    @post.comments.each do |comment|
+      comment.destroy
+    end
+
+    @post.postlike.each do |like|
+      like.destroy
+    end
+
+    @post.destroy
+    flash[:success] = 'Post deleted.'
+    redirect_to request.referrer || root_url
   end
+
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    post = Post.find(params[:id])
+    post.content = params[:post][:content]
+    post.save
+    redirect_to root_url
+  end
+
+  private
+
+    def get_friends(user)
+      friends = []
+
+      user.senders.each do |sender|
+        friends << User.find_by(id: sender.receiver) if sender.status == true
+      end
+
+      friends
+    end
+
 end

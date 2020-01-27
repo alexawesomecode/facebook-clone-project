@@ -3,8 +3,7 @@
     <span class="pr-10"><%= gravatar_for user, size: 150 %></span>
     <ul>
       <li><h4>
-        <%= user.first_name %>
-        <%= user.last_name %>
+        <%= user.name %>
       </h4></li>
       <li><h5><%= user.email %></h5></li>
       <li>
@@ -21,11 +20,11 @@
                                                                                  :receiver => user.id }), method: :post %>
         <% elsif friendship_status(user) == 'wasrequested' %>
           <%= link_to 'Accept', edit_friendship_path(get_friendship(user).id) %> |
-          <%= link_to 'Reject', edit_friendship_path(get_friendship(user).id) %>
+          <%= link_to 'Reject', friendship_path(get_friendship(user).id), method: :delete %>
         <% elsif friendship_status(user) == 'irequested' %>
           <%= link_to 'Cancel request', friendship_path(get_friendship(user).id), method: :delete %>
         <% elsif friendship_status(user) == 'friends' %>
-          <%= link_to 'Unfriend', friendship_path(get_friendship(user).id), :onclick => "#{ "confirm('Are you sure?')" }", method: :delete %>
+          <%= link_to 'Unfriend', friendship_path(get_friendship(user).id), :data => { :confirm => 'Are you sure?' }, method: :delete %>
         <% end %>
       </li>
     </ul>

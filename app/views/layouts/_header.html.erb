@@ -6,7 +6,7 @@
         <li><%= link_to "All users", user_index_path, class: "header-link" %></li>
         <li><%= link_to "Friends", friendships_path, class: "header-link" %></li>
         <% if user_signed_in? %>
-          <% pending = pending_friendship(current_user)%>
+          <% pending = pending_friendship(current_user) %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle header-link" data-toggle="dropdown">
               <%= pending.count %> Notifications<b class="caret"></b>
@@ -15,9 +15,8 @@
               <% pending.each do |pend| %>
                 <li>
                   <p class="pl-10">
-                    <% if pend.first_name || pend.last_name %>
-                      <%= pend.first_name %>
-                      <%= pend.last_name %>
+                    <% if pend.name %>
+                      <%= pend.name %>
                     <% else %>
                       <%= pend.email %>
                     <% end %>
@@ -26,7 +25,7 @@
                   <p class="pl-10">
                     <%= link_to "Profile", user_path(pend.id) %> | 
                     <%= link_to 'Accept', edit_friendship_path(get_friendship(pend).id) %> |
-                    <%= link_to 'Reject', edit_friendship_path(get_friendship(pend).id) %>
+                    <%= link_to 'Reject', friendship_path(get_friendship(pend).id), method: :delete %>
                   </p>
                 </li>
                 <li class="divider"></li>

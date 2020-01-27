@@ -3,13 +3,25 @@
     <section class="user_info user-space text-center">
       <h1><%= gravatar_for @user %></h1>
       <h1>
-        <%= @user.first_name %>
-        <%= @user.last_name %>
+        <%= @user.name %>
       </h1>
       <h3><%= @user.email %></h3>
       <% if @user.birthday %>
         <h3>Age: <%= age(@user.birthday) %></h3>
       <% end %>
+      <% if current_user == @user %>
+          <%= link_to 'Edit profile', edit_user_registration_path %>
+        <% elsif friendship_status(@user).nil? %>
+          <%= link_to 'Add friend', friendships_new_path(:friend_information => {:sender => current_user.id, 
+                                                                                 :receiver => @user.id }), method: :post %>
+        <% elsif friendship_status(@user) == 'wasrequested' %>
+          <%= link_to 'Accept', edit_friendship_path(get_friendship(@user).id) %> |
+          <%= link_to 'Reject', edit_friendship_path(get_friendship(@user).id) %>
+        <% elsif friendship_status(@user) == 'irequested' %>
+          <%= link_to 'Cancel request', friendship_path(get_friendship(@user).id), method: :delete %>
+        <% elsif friendship_status(@user) == 'friends' %>
+          <%= link_to 'Unfriend', friendship_path(get_friendship(@user).id), :data => { :confirm => 'Are you sure?' }, method: :delete %>
+        <% end %>
     </section>
   </aside>
   <div class="col-md-8">

@@ -2,9 +2,8 @@
 <div class="posts">
   <p class='post-content'><%= post.content %></p>
   <p class='post-likes'>
-    <% if post.user.first_name || post.user.last_name %>
-      <%= post.user.first_name %>
-      <%= post.user.last_name %> -
+    <% if post.user.name %>
+      <%= post.user.name %> - 
     <% else %>
       <%= post.user.email %> -
     <% end %>

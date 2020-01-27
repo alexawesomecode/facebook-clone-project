@@ -75,3 +75,6 @@ yarn-debug.log*
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+# Ignore uploaded test images.
+/public/uploads
