@@ -25,8 +25,8 @@ class User < ApplicationRecord
       user.provider = auth.provider
       user.email = auth.info.email
       user.name = auth.info.name
-      user.encrypted_password = Devise.friendly_token[0, 20]
-      user.image = auth.info.image
+      user.password = Devise.friendly_token[0, 20]
+      # user.image = auth.info.image
       # user.oauth_token = auth.credentials.token
       # user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.save!
