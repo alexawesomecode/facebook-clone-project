@@ -1,7 +1,7 @@
 module PostsHelper
-  def get_all_friends_id(user)
-    @friends = Friendship.where('status == true AND sender == ?', user.id)
-    @friends_id = @friends.map { |item| [item.receiver, item.sender] }.flatten.uniq!
-    @friends_id
+
+  def get_friendship(user)
+    Friendship.find_by(sender: user.id, receiver: current_user.id) ||
+      Friendship.find_by(sender: current_user.id, receiver: user.id)
   end
 end

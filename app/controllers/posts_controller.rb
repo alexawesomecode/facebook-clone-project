@@ -16,8 +16,10 @@ class PostsController < ApplicationController
   end
 
   def index
-    @user_friends = get_all_friends_id(current_user)
-    @posts = Post.where('creator IN (?)', @user_friends)
+    @user_friends = get_friends(current_user)
+    @posts = Post.where('creator IN (?) OR creator = (?)', @user_friends, current_user)
+    print 'posts = '
+    p @posts
   end
 
   def destroy
@@ -46,4 +48,17 @@ class PostsController < ApplicationController
     post.save
     redirect_to root_url
   end
+
+  private
+
+    def get_friends(user)
+      friends = []
+
+      user.senders.each do |sender|
+        friends << User.find_by(id: sender.receiver) if sender.status == true
+      end
+
+      friends
+    end
+
 end

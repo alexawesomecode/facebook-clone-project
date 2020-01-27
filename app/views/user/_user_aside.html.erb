@@ -13,11 +13,10 @@
   </div>
   <div class="friends-space row">
     <h1> Friend list: </h1>
-    <% friends = get_friends(current_user) %>
-    <% if friends == [] %>
+    <% if @user_friends == [] %>
       <h2 class="text-center">No friends yet! Too shy?</h2>
     <% else %>
-      <% friends.each do |user| %>
+      <% @user_friends.each do |user| %>
         <%= render 'user/user_profile_small', :user => user %>
       <% end %>
     <% end %>

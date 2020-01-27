@@ -12,30 +12,19 @@ module UserHelper
     Date.today < birthday + age.years ? age - 1 : age
   end
 
-  def complete_delete(id)
-    friends = Friendship.select { |f| f.sender == id or f.receiver == id }
-    friends.each do |friend|
-      friend.destroy
-    end
+  private
 
-    comments = Comment.select { |c| c.comment_creator == id }
-    comments.each do |comment|
-      comment.destroy
-    end
+    def friendship_status(user)
+      fs = current_user.receivers.select { |item| item.sender == user.id }
+      unless fs.empty?
+        return fs[0].status == false ? 'wasrequested' : 'friends'
+      end
 
-    posts = Posts.select { |p| p.creator == id }
-    posts.each do |post|
-      post.destroy
-    end
+      fs = current_user.senders.select { |item| item.receiver == user.id }
+      unless fs.empty?
+        return fs[0].status == false ? 'irequested' : 'friends'
+      end
 
-    commlikes = CommentLike.select { |cml| cml.user_id == id }
-    commlikes.each do |cl|
-      cl.destroy
+      nil
     end
-
-    postl = Postlike.select { |plk| plk.user_id == id }
-    postl.each do |pl|
-      pl.destroy
-    end
-  end
 end
