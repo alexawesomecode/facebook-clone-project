@@ -173,6 +173,11 @@ header {
   font-size: 20px;
 }
 
+.edit-links-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .cancel-account {
   text-align: center;
   padding-top: 20px;
