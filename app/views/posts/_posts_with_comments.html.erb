@@ -10,12 +10,11 @@
           <%= post.user.email %> - 
         <% end %>
         <% if post_liked?(post) %>
-          <%= link_to " ", find_postlike(post) , method: :delete, :class => "far fa-thumbs-up icons" %>
+          <%= link_to "Liked", find_postlike(post) , method: :delete %>
           <%= post.postlike.count %>
         <% else %>
-          <%= link_to " ", postlikes_path(:post_information => { :post_id => post.id, 
-                                                                 :user_id => current_user.id }),
-                                          method: post, :class => "far fa-thumbs-up icons icon-grey" %>
+          <%= link_to "Not Liked", postlikes_path(:post_information => { :post_id => post.id, 
+                                                                         :user_id => current_user.id }), method: post %>
           <%= post.postlike.count %>
         <% end %>
       </p>
@@ -34,12 +33,11 @@
                 <%= comment.user.email %> -
               <% end %>
               <% if comment_liked?(comment) %>
-                <%= link_to " ", commentlike_path(find_commentlike(comment)), method: :delete, :class => "far fa-thumbs-up icons" %>
+                <%= link_to "Liked", commentlike_path(find_commentlike(comment)), method: :delete %>
                 <%= comment.comment_like.count %></p>
               <% else %>
-                <%= link_to " ", commentlike_index_path(:comment_information => { :comment_id => comment.id, 
-                                                                                          :user_id => current_user.id }), 
-                                                                method: post, :class => "far fa-thumbs-up icons icon-grey" %>
+                <%= link_to "Not Liked", commentlike_index_path(:comment_information => { :comment_id => comment.id, 
+                                                                                          :user_id => current_user.id }), method: post %>
                 <%= comment.comment_like.count %></p>
               <% end %>
             </li>

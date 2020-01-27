@@ -12,8 +12,7 @@
       </h4></li>
       <li class="text-center">
         <%= link_to "Profile", user_path(user) %> | 
-        <%= link_to 'Unfriend', friendship_path(get_friendship(user).id), 
-            :data => { :confirm => 'Are you sure?' }, method: :delete %>
+        <%= link_to 'Unfriend', friendship_path(get_friendship(user).id), :onclick => "#{ "confirm('Are you sure?')" }", method: :delete %>
       </li>
     </ul>
   </div>

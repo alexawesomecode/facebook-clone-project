@@ -1,19 +1,19 @@
 <div class="row">
- 
-  <% unless @pending_friends == [] %>
+  <% friends = pending_friendship(current_user) %>
+  <% unless friends == [] %>
     <h1 class="text-center">Pending friendship requests</h1>
-    <% @pending_friends.each do |user| %>
+    <% friends.each do |user| %>
       <%= render 'user/user_profile', :user => user %>
     <% end %>
   <% end %>
 </div>
 <div class="row">
-  
-  <% if @friends == [] %>
+  <% friends = get_friends(current_user) %>
+  <% if friends == [] %>
     <h1 class="text-center">No friends yet! Too shy?</h1>
   <% else %>
     <h1 class="text-center">Friends</h1>
-    <% @friends.each do |user| %>
+    <% friends.each do |user| %>
       <%= render 'user/user_profile', :user => user %>
     <% end %>
   <% end %>

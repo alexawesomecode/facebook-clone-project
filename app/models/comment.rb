@@ -1,6 +1,4 @@
 class Comment < ApplicationRecord
-  validates :comment_content, presence: true
-  validates :post_id, presence: true
 
   # Association with Post
   belongs_to :post, foreign_key: 'post_id'

@@ -1,4 +1,5 @@
 class Postlike < ApplicationRecord
+
   # Association with User
   belongs_to :user, foreign_key: 'user_id'
 
