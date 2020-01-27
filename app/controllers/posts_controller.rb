@@ -18,8 +18,6 @@ class PostsController < ApplicationController
   def index
     @user_friends = get_friends(current_user)
     @posts = Post.where('creator IN (?) OR creator = (?)', @user_friends, current_user)
-    print 'posts = '
-    p @posts
   end
 
   def destroy
