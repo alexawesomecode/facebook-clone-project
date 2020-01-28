@@ -10,7 +10,7 @@ class UserController < ApplicationController
   private
 
   def complete_delete(id)
-    friends = Friendship.select { |f| f.sender == id or f.receiver == id }
+    friends = Friendship.select { |f| [f.sender, f.receiver].include?(id) }
     friends.each(&:destroy)
 
     comments = Comment.select { |c| c.comment_creator == id }
