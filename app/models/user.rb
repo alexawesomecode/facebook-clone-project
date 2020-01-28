@@ -20,17 +20,14 @@ class User < ApplicationRecord
   has_many :senders, class_name: 'Friendship', foreign_key: 'sender'
   has_many :receivers, class_name: 'Friendship', foreign_key: 'receiver'
 
-  def self.from_omniauth(auth)
-    where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.email = auth.info.email
-      user.name = auth.info.name
-      user.password = Devise.friendly_token[0, 20]
-      # user.oauth_token = auth.credentials.token
-      # user.oauth_expires_at = Time.at(auth.credentials.expires_at)
-      user.save!
-    end
+  def self.from_omniauth(auth, _signed_in_resource = nil)
+    user = User.where(provider: auth.provider, uid: auth.uid).first
+    user ||= User.create(name: auth.extra.raw_info.name,
+                         provider: auth.provider,
+                         uid: auth.uid,
+                         email: auth.info.email,
+                         password: Devise.friendly_token[0, 20])
+    user
   end
 
   def self.new_with_session(params, session)
