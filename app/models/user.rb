@@ -23,10 +23,10 @@ class User < ApplicationRecord
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
       user.provider = auth.provider
-      user.id = auth.uid
+      user.uid = auth.uid
       user.email = auth.info.email
       user.name = auth.info.name
-      user.encrypted_password = Devise.friendly_token[0, 20]
+      user.password = Devise.friendly_token[0, 20]
       # user.oauth_token = auth.credentials.token
       # user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.save!
@@ -35,7 +35,8 @@ class User < ApplicationRecord
 
   def self.new_with_session(params, session)
     super.tap do |user|
-      if data = session['devise.facebook_data'] && session['devise.facebook_data']['extra']['raw_info']
+      data = session['devise.facebook_data']
+      if data && session['devise.facebook_data']['extra']['raw_info']
         user.email = data['email'] if user.email.blank?
       end
     end
