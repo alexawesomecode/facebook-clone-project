@@ -39,6 +39,7 @@ In this project we used:
 * [Omniauth gem][omniauth] for the facebook integration
 * [Devise gem][devise] in the creation of the Users model and controller
 * [Bootstrap][bootstrap] for some CSS classes
+* AWS 
 
 ## Contributors
 
