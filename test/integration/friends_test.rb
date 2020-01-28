@@ -7,11 +7,11 @@ class PostInterfaceTest < ActionDispatch::IntegrationTest
 
     sign_in @user
     get user_path(@user_friend.id)
-    post friendships_path(params: { sender: @user.id, receiver: @user_friend.id })
+    post friendships_path(friend_information: { sender: @user.id, receiver: @user_friend.id })
 
-    assert_equal @user.senders.first.status, false
-    assert_equal @user.senders.first.sender, @user.id
-    assert_equal @user.senders.first.receiver, @user_friend.id
+    assert_equal @user_friend.receivers.first.status, false
+    assert_equal @user_friend.receivers.first.receiver, @user_friend.id
+    assert_equal @user_friend.receivers.first.sender, @user.id
 
     logout @user
 
@@ -28,6 +28,6 @@ class PostInterfaceTest < ActionDispatch::IntegrationTest
     get edit_friendship_path(get_friendship(@user, @user_friend).id)
     assert Friendship.first.status
     assert Friendship.second.status
-    assert_equal @user.senders.first.receiver, @user_friend.id
+    assert_equal @user_friend.receivers.first.sender, @user.id
   end
 end
