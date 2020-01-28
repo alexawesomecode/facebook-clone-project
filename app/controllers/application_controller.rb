@@ -15,10 +15,10 @@ class ApplicationController < ActionController::Base
     friends = []
 
     user.receivers.each do |receiver|
-      if User.find_by(id: receiver.sender) == nil
+      if User.find_by(id: receiver.sender).nil?
         complete_delete(receiver.sender)
-      else
-        friends << User.find_by(id: receiver.sender) if receiver.status == false
+      elsif receiver.status == false
+        friends << User.find_by(id: receiver.sender)
       end
     end
 
@@ -27,8 +27,8 @@ class ApplicationController < ActionController::Base
 
   protected
 
-    def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up, keys: %i[name image birthday])
-      devise_parameter_sanitizer.permit(:account_update, keys: %i[name image birthday])
-    end
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[name image birthday])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[name image birthday])
+  end
 end

@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.build(content: params[:post][:content], 
+    @post = current_user.posts.build(content: params[:post][:content],
                                      picture: params[:post][:picture])
     if @post.save
       flash[:success] = 'Post created.'
@@ -23,13 +23,9 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
 
-    @post.comments.each do |comment|
-      comment.destroy
-    end
+    @post.comments.each(&:destroy)
 
-    @post.postlike.each do |like|
-      like.destroy
-    end
+    @post.postlike.each(&:destroy)
 
     @post.destroy
     flash[:success] = 'Post deleted.'
@@ -49,14 +45,13 @@ class PostsController < ApplicationController
 
   private
 
-    def get_friends(user)
-      friends = []
+  def get_friends(user)
+    friends = []
 
-      user.senders.each do |sender|
-        friends << User.find_by(id: sender.receiver) if sender.status == true
-      end
-
-      friends
+    user.senders.each do |sender|
+      friends << User.find_by(id: sender.receiver) if sender.status == true
     end
 
+    friends
+  end
 end

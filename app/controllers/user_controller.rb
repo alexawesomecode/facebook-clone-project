@@ -9,30 +9,20 @@ class UserController < ApplicationController
 
   private
 
-    def complete_delete(id)
-      friends = Friendship.select { |f| f.sender == id or f.receiver == id }
-      friends.each do |friend|
-        friend.destroy
-      end
+  def complete_delete(id)
+    friends = Friendship.select { |f| f.sender == id or f.receiver == id }
+    friends.each(&:destroy)
 
-      comments = Comment.select { |c| c.comment_creator == id }
-      comments.each do |comment|
-        comment.destroy
-      end
+    comments = Comment.select { |c| c.comment_creator == id }
+    comments.each(&:destroy)
 
-      posts = Posts.select { |p| p.creator == id }
-      posts.each do |post|
-        post.destroy
-      end
+    posts = Posts.select { |p| p.creator == id }
+    posts.each(&:destroy)
 
-      commlikes = CommentLike.select { |cml| cml.user_id == id }
-      commlikes.each do |cl|
-        cl.destroy
-      end
+    commlikes = CommentLike.select { |cml| cml.user_id == id }
+    commlikes.each(&:destroy)
 
-      postl = Postlike.select { |plk| plk.user_id == id }
-      postl.each do |pl|
-        pl.destroy
-      end
-    end
+    postl = Postlike.select { |plk| plk.user_id == id }
+    postl.each(&:destroy)
+  end
 end

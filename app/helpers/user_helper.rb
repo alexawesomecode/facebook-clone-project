@@ -14,17 +14,17 @@ module UserHelper
 
   private
 
-    def friendship_status(user)
-      fs = current_user.receivers.select { |item| item.sender == user.id }
-      unless fs.empty?
-        return fs[0].status == false ? 'wasrequested' : 'friends'
-      end
-
-      fs = current_user.senders.select { |item| item.receiver == user.id }
-      unless fs.empty?
-        return fs[0].status == false ? 'irequested' : 'friends'
-      end
-
-      nil
+  def friendship_status(user)
+    fs = current_user.receivers.select { |item| item.sender == user.id }
+    unless fs.empty?
+      return fs[0].status == false ? 'wasrequested' : 'friends'
     end
+
+    fs = current_user.senders.select { |item| item.receiver == user.id }
+    unless fs.empty?
+      return fs[0].status == false ? 'irequested' : 'friends'
+    end
+
+    nil
+  end
 end

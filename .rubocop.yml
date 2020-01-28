@@ -5,6 +5,7 @@ AllCops:
     - "Rakefile"
     - db/schema.rb
     - bin/bundle
+    - 'node_modules/**/*'
 
   DisplayCopNames: true
 
@@ -20,6 +21,8 @@ Metrics/BlockLength:
   ExcludedMethods: ['describe']
   Max: 30
 
+Lint/AssignmentInCondition:
+  Enabled: false
 
 Style/Documentation:
   Enabled: false

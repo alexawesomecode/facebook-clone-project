@@ -1,8 +1,8 @@
 class Post < ApplicationRecord
   mount_uploader :picture, PictureUploader
   validates :content, presence: true
-  validate  :picture_size
-  
+  validate :picture_size
+
   # Association with User
   belongs_to :user, foreign_key: 'creator'
 
@@ -17,8 +17,6 @@ class Post < ApplicationRecord
 
   # Validates the size of an uploaded picture.
   def picture_size
-    if picture.size > 5.megabytes
-      errors.add(:picture, "should be less than 5MB")
-    end
+    errors.add(:picture, 'should be less than 5MB') if picture.size > 5.megabytes
   end
 end

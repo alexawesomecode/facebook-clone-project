@@ -16,9 +16,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
 
-    @comment.comment_like.each do |like|
-      like.destroy
-    end
+    @comment.comment_like.each(&:destroy)
 
     @comment.destroy
     flash[:success] = 'Comment deleted.'

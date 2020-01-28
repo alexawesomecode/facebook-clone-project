@@ -13,8 +13,6 @@ gem 'mini_magick'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'pg'
-gem 'carrierwave'
-gem 'mini_magick'
 gem 'puma', '~> 4.1'
 gem 'rails', '~> 6.0.1'
 gem 'sass-rails', '>= 6'
@@ -23,8 +21,8 @@ gem 'webpacker', '~> 4.0'
 gem 'will_paginate', '3.2.1'
 # gem 'redis', '~> 4.0'
 # gem 'image_processing', '~> 1.2'
-gem 'fog-aws'
 gem 'bootsnap', '>= 1.4.2', require: false
+gem 'fog-aws'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

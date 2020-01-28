@@ -38,32 +38,31 @@ class FriendshipsController < ApplicationController
 
   private
 
-    def pending_friendship(user)
-      friends = []
+  def pending_friendship(user)
+    friends = []
 
-      user.receivers.each do |receiver|
-        if User.find_by(id: receiver.sender) == nil
-          complete_delete(receiver.sender)
-        else
-          friends << User.find_by(id: receiver.sender) if receiver.status == false
-        end
+    user.receivers.each do |receiver|
+      if User.find_by(id: receiver.sender).nil?
+        complete_delete(receiver.sender)
+      elsif receiver.status == false
+        friends << User.find_by(id: receiver.sender)
       end
-
-      friends
     end
 
-    def get_friends(user)
-      friends = []
+    friends
+  end
 
-      user.senders.each do |sender|
-        friends << User.find_by(id: sender.receiver) if sender.status == true
-      end
+  def get_friends(user)
+    friends = []
 
-      friends
+    user.senders.each do |sender|
+      friends << User.find_by(id: sender.receiver) if sender.status == true
     end
 
-    def get_inverse(friendship)
-      Friendship.find_by(sender: friendship.receiver, receiver: friendship.sender)
-    end
+    friends
+  end
 
+  def get_inverse(friendship)
+    Friendship.find_by(sender: friendship.receiver, receiver: friendship.sender)
+  end
 end
