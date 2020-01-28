@@ -1,0 +1,22 @@
+.gravatar {
+  border-radius: 20px;
+}
+
+.user-block {
+  display: flex;
+  margin: 20px;
+  padding: 10px;
+  background-color: white;
+  flex-wrap: wrap;
+  width: 100%;
+  align-items: center;
+}
+
+.user-block-small {
+  justify-content: center;
+}
+
+ul {
+  list-style: none;
+  padding-left: 20px;
+}

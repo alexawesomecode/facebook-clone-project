@@ -1,0 +1,31 @@
+.post-area {
+  height:130px !important;
+}
+
+.posts {
+  margin-top: 20px;
+  padding-top: 20px;
+  background-color: white;
+}
+
+.post-content {
+  border: ridge;
+  padding: 12px;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.post-likes {
+  padding-right: 30px;
+  text-align: right;
+  padding-bottom: 10px;
+}
+
+.new-post {
+  font-size: 30px;
+}
+
+.post-images {
+  display: flex;
+  justify-content: center;
+}

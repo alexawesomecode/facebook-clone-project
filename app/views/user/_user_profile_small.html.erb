@@ -1,0 +1,19 @@
+<div class="col-md-4 col-sm-6">
+  <div class="user-block user-block-small">
+    <span class=""><%= gravatar_for user, size: 100 %></span>
+    <ul class="pl-0">
+      <li class="text-center"><h4>
+      <% if user.name %>
+        <%= user.name %>
+      <% else %>
+        Stranger
+      <% end %>
+      </h4></li>
+      <li class="text-center">
+        <%= link_to "Profile", user_path(user) %> | 
+        <%= link_to 'Unfriend', friendship_path(get_friendship(user).id), 
+            :data => { :confirm => 'Are you sure?' }, method: :delete %>
+      </li>
+    </ul>
+  </div>
+</div>

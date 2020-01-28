@@ -1,0 +1,5 @@
+<div class="row">
+  <% @users.each do |user| %>
+    <%= render 'user/user_profile', :user => user %>
+  <% end %>
+</div>

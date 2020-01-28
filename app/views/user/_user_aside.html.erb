@@ -1,0 +1,24 @@
+<div class="col-md-4">
+  <div class="user-space text-center">
+    <h1><%= gravatar_for current_user %></h1>
+    <h2>
+      Hello 
+      <% if current_user.name %>
+        <%= current_user.name %>
+      <% else %>
+        stranger
+      <% end %>
+    </h2>
+    <p>The time is now: <%= Time.now %></p>
+  </div>
+  <div class="friends-space row">
+    <h1> Friend list: </h1>
+    <% if @user_friends == [] %>
+      <h2 class="text-center">No friends yet! Too shy?</h2>
+    <% else %>
+      <% @user_friends.each do |user| %>
+        <%= render 'user/user_profile_small', :user => user %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

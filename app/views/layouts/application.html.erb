@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FacebookCloneProject</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <script src="https://kit.fontawesome.com/6acab75d5d.js" crossorigin="anonymous"></script>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag "application" %>
+  </head>
+  <body>
+    <%= render 'layouts/header' %>
+    <div class="main-page">
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+    <%= yield %>
+    <% if user_signed_in? %>
+      <%= render 'layouts/footer' %>
+    <% end %>
+    </div>
+  </body>
+</html>

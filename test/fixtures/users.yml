@@ -1,0 +1,11 @@
+player_one:
+  name: alex
+  email: example@mail.com
+  encrypted_password: <%= User.new.send(:password_digest, "123456") %>
+  id: 1
+
+player_two:
+  name: raphael
+  email: example2@mail.com
+  encrypted_password: <%= User.new.send(:password_digest, "123456") %>
+  id: 2

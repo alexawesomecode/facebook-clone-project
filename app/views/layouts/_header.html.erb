@@ -1,0 +1,56 @@
+<header class="navbar top-navbar">
+  <div class="container">
+    <%= link_to "FriendsNet - Our Facebook Clone", root_path, class: "header-link p-15" %>
+    <nav class="elements-to-right">
+      <ul class="nav navbar-nav">
+        <li><%= link_to "All users", user_index_path, class: "header-link" %></li>
+        <li><%= link_to "Friends", friendships_path, class: "header-link" %></li>
+        <% if user_signed_in? %>
+          <% pending = pending_friendship(current_user) %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle header-link" data-toggle="dropdown">
+              <%= pending.count %> Notifications<b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <% pending.each do |pend| %>
+                <li>
+                  <p class="pl-10">
+                    <% if pend.name %>
+                      <%= pend.name %>
+                    <% else %>
+                      <%= pend.email %>
+                    <% end %>
+                    sent you a friend request
+                  </p>
+                  <p class="pl-10">
+                    <%= link_to "Profile", user_path(pend.id) %> | 
+                    <%= link_to 'Accept', edit_friendship_path(get_friendship(pend).id) %> |
+                    <%= link_to 'Reject', friendship_path(get_friendship(pend).id), method: :delete %>
+                  </p>
+                </li>
+                <li class="divider"></li>
+              <% end %>
+              <li class="divider"></li>
+              <li><%= link_to "All Notifications", '/friendships/notifications' %></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle header-link" data-toggle="dropdown">
+              Account <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Profile", user_path(current_user) %></li>
+              <li><%= link_to "Settings", edit_user_registration_path %></li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+              </li>
+            </ul>
+          </li>
+        <% else %>
+          <li><%= link_to "Log in", new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>

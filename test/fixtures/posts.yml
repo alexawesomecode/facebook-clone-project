@@ -1,0 +1,9 @@
+post_one:
+  content: First post
+  creator: 1
+  id: 1
+
+post_two:
+  content: Second post
+  creator: 2
+  id: 2

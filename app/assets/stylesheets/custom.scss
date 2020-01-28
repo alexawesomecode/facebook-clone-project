@@ -1,0 +1,221 @@
+@import 'bootstrap';
+@import 'bootstrap-sprockets';
+
+$face-color: #4267b2;
+$face-back:  #e9ebee;
+
+.bg-white {
+  background-color: white;
+}
+
+.pb-20 {
+  padding-bottom: 20px;
+}
+
+.pb-50 {
+  padding-bottom: 50px;
+}
+
+.pr-10 {
+  padding-right: 10px;
+}
+
+.pl-0 {
+  padding-left: 0;
+}
+
+.pl-6 {
+  padding-left: 6px;
+}
+
+.pl-10 {
+  padding-left: 10px;
+}
+
+.pt-5 {
+  padding-top: 5px
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.alert {
+  position: relative;
+  padding: .75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+}
+
+.alert-success {
+  color: #1e6641;
+  background-color: #d8f3e5;
+  border-color: #1e6641;
+}
+
+.alert-notice {
+  color: #0c5460;
+  background-color: #d1ecf1;
+  border-color: #0c5460;
+}
+
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #721c24;
+}
+
+.alert-alert {
+  color: #004085;
+  background-color: #cce5ff;
+  border-color: #004085;
+}
+
+header {
+  background-color: $face-color;
+
+  .container {
+    align-items: center;
+    display: flex;
+    width: 100%;
+  }
+
+  .header-link {
+    color: white;
+    padding: 5px;
+
+    &:hover, &:focus {
+      color: $face-color;
+      border-radius: 15px;
+      background-color: #eeeeee;
+      text-decoration: none;
+    }
+  }
+}
+
+.form-control {
+  margin-bottom: 20px;
+}
+
+.top-navbar {
+  position: fixed;
+  z-index: 1043;
+  top: 0;
+  left: 0;
+  right: 0;
+  font-size: 25px;
+}
+
+.bottom-navbar {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid lightgray;
+  color: black;
+  a {
+    color: $gray;
+    &:hover {
+      color: $gray-darker;
+    }
+  }
+  small {
+    float: left;
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 15px;
+    }
+  }
+}
+
+.main-page {
+  padding: 50px;
+  background-color: $face-back;
+  margin-top: 20px;
+
+  form {
+    width: 80%;
+    padding-top: 20px;
+    margin: 0 auto;
+    // font-size: 30px;
+  }
+
+  .index-posts {
+    padding-top: 40px;
+    margin-left: 25%
+  }
+
+  .new-post {
+    width: 100%;
+  }
+}
+
+.user-space, .friends-space {
+  background-color: lightblue;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.logo {
+  color: white;
+}
+
+.elements-to-right {
+  display: flex;
+  flex-direction: row-reverse;
+  flex: 1;
+}
+
+.edit-links {
+  font-size: 20px;
+}
+
+.edit-links-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.cancel-account {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.cancel-button {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.icons {
+  font-size: 20px;
+}
+
+.fb-btn-div {
+  width: 80%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.facebook-btn {
+  width: 100%;
+  height: 35px;
+  border-radius: 4px;
+  background: #3b5998;
+  color:white;
+  border: 0px transparent;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover{
+    background: #3b5998;
+    opacity: 0.6;
+  }
+}

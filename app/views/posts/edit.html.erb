@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="new-post">
+    <%= form_for(:post, url: post_path, method: :patch) do |f| %>
+      <%= f.label 'Tell me everything:' %>
+      <%= f.text_area :content, class: "post-area form-control", autofocus: true, :value => @post.content %>
+
+<!--       <span class="picture post-images">
+        <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png', class: "btn" %>
+      </span> -->
+
+      <%= f.submit "Save edit", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
