@@ -3,9 +3,9 @@ AllCops:
     - "README.md"
     - "Guardfile"
     - "Rakefile"
-    - db/schema.rb
-    - bin/bundle
-    - 'node_modules/**/*'
+    - "db/schema.rb"
+    - "bin/bundle"
+    - "node_modules/**/*"
 
   DisplayCopNames: true
 
