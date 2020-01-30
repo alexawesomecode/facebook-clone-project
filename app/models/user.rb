@@ -28,6 +28,7 @@ class User < ApplicationRecord
                          email: auth.info.email,
                          password: '123456',
                          birthday: Date.today)
+    redirect_to edit_user_registration_path
     user
   end
 

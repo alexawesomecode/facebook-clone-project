@@ -25,6 +25,9 @@
         <%= f.label :current_password, class: 'display-none' %>
         <%= f.password_field :current_password, autocomplete: "password", class: 'form-control display-none', :value => '123456' %>
 
+        <%= f.label :birthday, class: 'display-none' %>
+        <%= f.password_field :birthday, autocomplete: "password", class: 'form-control display-none', :value => Date.yesterday %>
+
         <%= f.submit "Update", class: "btn btn-primary form-control" %>
 
       <% else %>
