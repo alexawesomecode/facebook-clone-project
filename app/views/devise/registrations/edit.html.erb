@@ -1,32 +1,17 @@
 <div class="row">
   <div class="col-md-4 col-md-offset-4 bg-white pb-20">
-    <% if current_user.birthday == Date.today %>
-
-      <h2>Welcome <% current_user.name %>.</h2>
-      <h3>Please, create a new password, you may need it in the future.</h3>
-
-    <% else %>
-
-      <h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-    <% end %>
+    <h2>Edit profille</h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
-      <% if current_user.birthday == Date.today %>
+      <% if current_user.provider == 'facebook' %>
 
-        <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
-        <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
+        <%= f.label :name %>
+        <%= f.text_field :name, autocomplete: "name", class: 'form-control' %>
 
-        <%= f.label :password_confirmation %>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
-
-        <%= f.label :current_password, class: 'display-none' %>
-        <%= f.password_field :current_password, autocomplete: "password", class: 'form-control display-none', :value => '123456' %>
-
-        <%= f.label :birthday, class: 'display-none' %>
-        <%= f.password_field :birthday, autocomplete: "password", class: 'form-control display-none', :value => Date.yesterday %>
+        <%= f.label :birthday %>
+        <%= f.date_field :birthday, autocomplete: "birthday", class: 'form-control' %>
 
         <%= f.submit "Update", class: "btn btn-primary form-control" %>
 
@@ -51,15 +36,12 @@
         <%= f.label :password_confirmation %>
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
 
-        <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
-        <%= f.password_field :current_password, autocomplete: "password", class: 'form-control' %>
-
         <%= f.submit "Update", class: "btn btn-primary form-control" %>
 
       <% end %>
     <% end %>
 
-    <% unless current_user.birthday == Date.today %>
+    <% unless current_user.provider == 'facebook' %>
       <div class="gravatar_edit text-center avatar-div">
         <dir class="pl-0"><span class="avatar-img">Click on the image to change the avatar</span></dir>
         <a href="http://gravatar.com/emails" target="_blank" class="avatar-text"><%= gravatar_for @user %></a></span>

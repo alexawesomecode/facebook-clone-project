@@ -1,7 +1,13 @@
 class StaticPagesController < ApplicationController
-  def help; end
+  def help
+    @user_friends = get_friends(current_user)
+  end
 
-  def about; end
+  def about
+    @user_friends = get_friends(current_user)
+  end
 
-  def contact; end
+  def contact
+    @user_friends = get_friends(current_user)
+  end
 end

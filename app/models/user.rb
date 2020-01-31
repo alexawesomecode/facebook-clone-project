@@ -16,7 +16,6 @@ class User < ApplicationRecord
   has_many :comment_id, through: :comment_like
 
   # Associations with Friends
-
   has_many :senders, class_name: 'Friendship', foreign_key: 'sender'
   has_many :receivers, class_name: 'Friendship', foreign_key: 'receiver'
 
@@ -26,9 +25,7 @@ class User < ApplicationRecord
                          provider: auth.provider,
                          uid: auth.uid,
                          email: auth.info.email,
-                         password: '123456',
-                         birthday: Date.today)
-    redirect_to edit_user_registration_path
+                         password: Devise.friendly_token[0, 20])
     user
   end
 
