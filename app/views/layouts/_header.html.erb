@@ -2,7 +2,7 @@
   <div class="container">
     <%= link_to "FriendsNet - Our Facebook Clone", root_path, class: "header-link p-15" %>
     <nav class="elements-to-right">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav display-lg">
         <li><%= link_to "All users", user_index_path, class: "header-link" %></li>
         <li><%= link_to "Friends", friendships_path, class: "header-link" %></li>
         <% if user_signed_in? %>
@@ -51,6 +51,29 @@
           <li><%= link_to "Log in", new_user_session_path %></li>
         <% end %>
       </ul>
+      <span class="nav navbar-nav display-sm">
+        <div class="dropdown pl-110">
+            <a href="#" class="dropdown-toggle header-link" data-toggle="dropdown">
+              <i class="fas fa-bars p-10 ml-20"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "All users", user_index_path %></li>
+              <li><%= link_to "Friends", friendships_path %></li>
+              <% if user_signed_in? %>
+                <% pending = pending_friendship(current_user) %>
+                <li><%= link_to "All Notifications", '/friendships/notifications' %></li>
+                <li><%= link_to "See profile", user_path(current_user) %></li>
+                <li><%= link_to "Edit profile", edit_user_registration_path %></li>
+                <li class="divider"></li>
+                <li>
+                  <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+                </li>
+              <% else %>
+                <li><%= link_to "Log in", new_user_session_path %></li>
+              <% end %>
+            </ul>
+          </div>
+      </span>
     </nav>
   </div>
 </header>

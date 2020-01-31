@@ -8,6 +8,10 @@ $face-back:  #e9ebee;
   background-color: white;
 }
 
+.p-10 {
+  padding: 10px;
+}
+
 .pb-20 {
   padding-bottom: 20px;
 }
@@ -32,12 +36,20 @@ $face-back:  #e9ebee;
   padding-left: 10px;
 }
 
+.pl-110 {
+  padding-left: 110px;
+}
+
 .pt-5 {
   padding-top: 5px
 }
 
 .mt-20 {
   margin-top: 20px;
+}
+
+.mr-20 {
+  margin-right: 20px;
 }
 
 .alert {
@@ -88,6 +100,7 @@ header {
   .header-link {
     color: white;
     padding: 5px;
+    font-size: 20px;
 
     &:hover, &:focus {
       color: $face-color;
@@ -96,6 +109,10 @@ header {
       text-decoration: none;
     }
   }
+}
+
+.fa-bars {
+  font-size: 25px;
 }
 
 .form-control {
@@ -163,6 +180,10 @@ header {
   padding: 10px;
 }
 
+.display-lg {
+  display: none;
+}
+
 .logo {
   color: white;
 }
@@ -221,5 +242,15 @@ header {
   &:hover{
     background: #3b5998;
     opacity: 0.6;
+  }
+}
+
+@media (min-width: 992px) {
+  .display-lg {
+    display: block;
+  }
+
+  .display-sm {
+    display: none;
   }
 }
