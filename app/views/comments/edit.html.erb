@@ -1,19 +1,20 @@
-<% post = Post.find(params[:post_id]) %>
+<% provide(:title, 'Edit comment') %>
 <div class="posts">
-  <p class='post-content'><%= post.content %></p>
+  <p class='post-content'><%= @post.content %></p>
   <p class='post-likes'>
-    <% if post.user.name %>
-      <%= post.user.name %> - 
+    <% if @post.user.name %>
+      <%= @post.user.name %> - 
     <% else %>
-      <%= post.user.email %> -
+      <%= @post.user.email %> -
     <% end %>
-    <% if post_liked?(post) %>
-      <%= link_to "Liked", find_postlike(post) , method: :delete %>
-      <%= post.postlike.count %>
+    <% if post_liked?(@post) %>
+      <%= link_to " ", find_postlike(@post) , method: :delete, :class => "far fa-thumbs-up icons" %>
+      <%= @post.postlike.count %>
     <% else %>
-      <%= link_to "Not Liked", postlikes_path(:post_information => { :post_id => post.id, 
-                                                                     :user_id => current_user.id }), method: post%>
-      <%= post.postlike.count %>
+      <%= link_to " ", postlikes_path(:post_information => { :post_id => @post.id, 
+                                                             :user_id => current_user.id }),
+                                      method: post, :class => "far fa-thumbs-up icons icon-grey" %>
+      <%= @post.postlike.count %>
     <% end %>
   </p>
 </div>
