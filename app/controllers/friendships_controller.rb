@@ -52,16 +52,6 @@ class FriendshipsController < ApplicationController
     friends
   end
 
-  def get_friends(user)
-    friends = []
-
-    user.senders.each do |sender|
-      friends << User.find_by(id: sender.receiver) if sender.status == true
-    end
-
-    friends
-  end
-
   def get_inverse(friendship)
     Friendship.find_by(sender: friendship.receiver, receiver: friendship.sender)
   end

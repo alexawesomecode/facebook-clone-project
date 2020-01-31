@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :get_friendship
   helper_method :pending_friendship
+  helper_method :get_friends
 
   def get_friendship(user)
     Friendship.find_by(sender: user.id, receiver: current_user.id) ||
@@ -20,6 +21,16 @@ class ApplicationController < ActionController::Base
       elsif receiver.status == false
         friends << User.find_by(id: receiver.sender)
       end
+    end
+
+    friends
+  end
+
+  def get_friends(user)
+    friends = []
+
+    user.senders.each do |sender|
+      friends << User.find_by(id: sender.receiver) if sender.status == true
     end
 
     friends
