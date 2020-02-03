@@ -61,4 +61,4 @@ Raphael Cordeiro - [GitHub][rapha-github] - [Twitter][rapha-twitter]
 [alex-twitter]: https://twitter.com/alexcode0
 [rapha-github]: https://github.com/phalado
 [rapha-twitter]: https://twitter.com/phalado
-[ERD]: https://raw.githubusercontent.com/alexawesomecode/facebook-clone-project/seventh-milestone/docs/Facebook-clone.png
+[ERD]: https://raw.githubusercontent.com/alexawesomecode/facebook-clone-project/master/docs/Facebook-clone.png
