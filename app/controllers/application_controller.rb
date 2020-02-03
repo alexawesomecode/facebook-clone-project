@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :get_friendship
   helper_method :pending_friendship
+  helper_method :get_friends
 
   def get_friendship(user)
     Friendship.find_by(sender: user.id, receiver: current_user.id) ||
@@ -25,10 +26,20 @@ class ApplicationController < ActionController::Base
     friends
   end
 
+  def get_friends(user)
+    friends = []
+
+    user.senders.each do |sender|
+      friends << User.find_by(id: sender.receiver) if sender.status == true
+    end
+
+    friends
+  end
+
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: %i[name image birthday])
-    devise_parameter_sanitizer.permit(:account_update, keys: %i[name image birthday])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[name image birthday password])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[name image birthday password])
   end
 end

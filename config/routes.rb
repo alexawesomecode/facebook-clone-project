@@ -16,7 +16,8 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments, only: %i[new create edit update destroy]
   end
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callback' }
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callback',
+                                    registrations: 'registrations' }
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

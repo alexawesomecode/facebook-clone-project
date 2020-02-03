@@ -1,5 +1,5 @@
+<% provide(:title, 'Friends') %>
 <div class="row">
- 
   <% unless @pending_friends == [] %>
     <h1 class="text-center">Pending friendship requests</h1>
     <% @pending_friends.each do |user| %>
@@ -8,7 +8,6 @@
   <% end %>
 </div>
 <div class="row">
-  
   <% if @friends == [] %>
     <h1 class="text-center">No friends yet! Too shy?</h1>
   <% else %>

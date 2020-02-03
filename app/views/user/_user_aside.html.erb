@@ -1,4 +1,4 @@
-<div class="col-md-4">
+<div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-0">
   <div class="user-space text-center">
     <h1><%= gravatar_for current_user %></h1>
     <h2>
@@ -9,9 +9,9 @@
         stranger
       <% end %>
     </h2>
-    <p>The time is now: <%= Time.now %></p>
+    <p>The time now is: <%= Time.now %></p>
   </div>
-  <div class="friends-space row">
+  <div class="friends-space display-lg row">
     <h1> Friend list: </h1>
     <% if @user_friends == [] %>
       <h2 class="text-center">No friends yet! Too shy?</h2>

@@ -1,9 +1,22 @@
+<% provide(:title, 'Edit profile') %>
 <div class="row">
   <div class="col-md-4 col-md-offset-4 bg-white pb-20">
-    <h2>Edit <%= resource_name.to_s.humanize %></h2>
+    <h2>Edit profille</h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
+
+      <% if current_user.provider == 'facebook' %>
+
+        <%= f.label :name %>
+        <%= f.text_field :name, autocomplete: "name", class: 'form-control' %>
+
+        <%= f.label :birthday %>
+        <%= f.date_field :birthday, autocomplete: "birthday", class: 'form-control' %>
+
+        <%= f.submit "Update", class: "btn btn-primary form-control" %>
+
+      <% else %>
 
         <%= f.label :email %>
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
@@ -24,22 +37,24 @@
         <%= f.label :password_confirmation %>
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
 
-        <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
-        <%= f.password_field :current_password, autocomplete: "password", class: 'form-control' %>
-
         <%= f.submit "Update", class: "btn btn-primary form-control" %>
+
+      <% end %>
     <% end %>
 
-    <div class="gravatar_edit text-center avatar-div">
-      <dir class="pl-0"><span class="avatar-img">Click on the image to change the avatar</span></dir>
-      <a href="http://gravatar.com/emails" target="_blank" class="avatar-text"><%= gravatar_for @user %></a></span>
-    </div>
+    <% unless current_user.provider == 'facebook' %>
+      <div class="gravatar_edit text-center avatar-div">
+        <dir class="pl-0"><span class="avatar-img">Click on the image to change the avatar</span></dir>
+        <a href="http://gravatar.com/emails" target="_blank" class="avatar-text"><%= gravatar_for @user %></a></span>
+      </div>
 
-    <h4 class="cancel-account">Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></h3>
+      <h4 class="cancel-account">Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></h3>
 
-    <div class="text-center"></div>
+      <div class="text-center"></div>
 
-    <%= link_to "Back", :back, class: "btn btn-primary form-control mt-20" %>
+      <%= link_to "Back", :back, class: "btn btn-primary form-control mt-20" %>
+
+    <% end %>
 
   </div>
 </div>
